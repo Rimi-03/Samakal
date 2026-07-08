@@ -36,39 +36,24 @@
   --bg-dark: #1a1a2e;
 }
 
-/* Apply SolaimanLipi to all text elements except icons */
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-span,
-div:not(.social-links):not(.header-actions):not(.footer-social),
-a:not(.social-links a):not(.footer-social a),
-button:not(.mobile-menu-btn):not(.mobile-search-btn):not(.search-toggle):not(
-    .close-search
-  ):not(.close-sticky-ad),
-input,
-textarea,
-select,
-label,
-li,
-td,
-th,
-address,
-blockquote,
-small,
-strong,
-b,
-em,
-i {
-  font-family: "SolaimanLipi";
+/* Apply SolaimanLipi universally using '*' while explicitly safeguarding icons */
+*,
+*::before,
+*::after {
+  font-family: "SolaimanLipi", sans-serif;
+
+  /* 1. Force crisp subpixel layout & smooth out jagged edges */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 2. Enable advanced typography engines for perfect Bengali complex ligatures */
+  text-rendering: optimizeLegibility;
+  font-feature-settings:
+    "liga" 1,
+    "onum" 1;
 }
 
-/* Font Awesome icons - keep their font */
+/* Font Awesome icons fallback - FORCE keep their font engine */
 .fa,
 .fas,
 .far,
@@ -79,19 +64,25 @@ i {
 .fa-light,
 .fa-brands,
 [class^="fa-"],
-[class*=" fa-"] {
-  font-family: "Font Awesome 6 Free" !important;
+[class*=" fa-"],
+[class^="fa-"]::before,
+[class*=" fa-"]::before {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
 }
 
 .fa-brands,
-.fab {
+.fab,
+.fa-brands::before,
+.fab::before {
   font-family: "Font Awesome 6 Brands" !important;
 }
 
 body {
+  color: #111111;
   background-color: #fff;
   color: var(--text-dark);
   line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
 a {
@@ -507,6 +498,7 @@ img {
     color: #666;
   }
 }
+
 /* hero sectionn  */
 .match-section-bg {
   background-color: #0b0a26;
@@ -556,11 +548,11 @@ img {
 }
 
 .lead-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
   margin-bottom: 10px;
-  line-height: 1.3;
+  line-height: 22.4px;
 }
 
 .lead-brief {
@@ -1278,24 +1270,6 @@ img {
   font-weight: 700;
   color: var(--text-dark);
   margin-top: 10px;
-  line-height: 1.4;
-}
-
-.gallery-item {
-  display: block;
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.gallery-item img {
-  border-radius: 6px;
-}
-
-.gallery-item-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-dark);
-  margin-top: 6px;
   line-height: 1.4;
 }
 
