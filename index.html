@@ -947,24 +947,41 @@
                   </p>
                 </a>
               </div>
-              <div class="col-lg-6">
-                <div class="world-cup-widget">
-                  <img
-                    src="https://samakal.com/media/common/banner-wcs.jpg"
-                    alt="World Cup Score"
-                    class="img-fluid w-100"
-                  />
-                </div>
-                <div class="quiz-banner mt-3 text-center">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://samakal.com/media/common/banner-wc-quiz.jpeg"
-                      alt="World Cup Quiz"
-                      class="img-fluid"
-                    />
-                  </a>
-                </div>
-              </div>
+
+<div class="col-lg-6">
+  <div class="world-cup-widget mb-4" style="max-width: 100%;">
+    
+    <div class="position-relative overflow-hidden" style="border-radius: 12px;">
+      
+      <img
+        src="https://samakal.com/media/common/banner-wcs.jpg"
+        alt="World Cup Score"
+        class="img-fluid w-100 d-block"
+      />
+      
+      <!-- FIXED: Covered the image white leak with the matching theme Navy color -->
+      <div class="position-absolute" style="top: 54px; left: 0; right: 0; bottom: 0; padding: 10px; background-color: #0b1c4c;">
+        <div class="ratio h-100 w-100">
+          <iframe
+            src="https://www.sportbusy.com/embed/world-cup?theme=2&amp;compact=1&amp;borderWidth=0&amp;borderRadius=0&amp;tz=GMT%2B6&amp;h=360"
+            class="w-100 h-100 border-0 rounded-3"
+            loading="lazy"
+            title="SportBusy World Cup 2026 Widget"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Quiz Banner -->
+    <div class="quiz-banner mt-3 text-center">
+      <a href="#" target="_blank">
+        <img src="https://samakal.com/media/common/banner-wc-quiz.jpeg" alt="World Cup Quiz" class="img-fluid rounded" />
+      </a>
+    </div>
+
+  </div>
+</div>
             </div>
           </div>
 
@@ -977,43 +994,53 @@
                   সর্বশেষ
                 </h3>
               </a>
-              <ul class="latest-news-list">
+              <!-- Added classes overflow-auto and inline style for max-height -->
+              <ul
+                class="latest-news-list overflow-auto"
+                style="max-height: 400px"
+              >
                 <li>
                   <a href="#"
                     ><span class="counter">১.</span> কোচের 'এক্স' সংকেত:
                     ফুটবলীয় আবেগে শাস্তিযোগ্য অপরাধ</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">২.</span> বার কাউন্সিলের মতো সাংবাদিক
                     নিবন্ধনের ব্যবস্থা: তথ্য ও সম্প্রচার মন্ত্রী</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">৩.</span> শাপলা চত্বর হত্যাযজ্ঞের
                     তদন্ত শেষ, অভিযোগ দাখিল ২১ জুলাই</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">৪.</span> মন্ত্রীদের অধিবেশনে যোগ
                     দিতে দেরি, মাঝপথে সমাপ্ত প্রশ্নোত্তর পর্ব</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">৫.</span> নগরে বাগান করে বেড়ানো
                     রকিবুল পাচ্ছেন 'বৃক্ষরোপণে জাতীয় পুরস্কার'</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">৬.</span> নতুন শিক্ষাবর্ষে
                     পাঠ্যবইয়ের সংকট দূর হবে তো?</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">৭.</span> জলাবদ্ধতা এড়াতে
@@ -1021,30 +1048,35 @@
                     প্রতিমন্ত্রী</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">৮.</span> ব্যাংকের গ্রাহকরা পুরো টাকা
                     ফেরত পাবেন, তবে সময় লাগবে: সংসদে অর্থমন্ত্রী</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">৯.</span> রেফারিং নিয়ে বিভক্ত বিশ্ব,
                     কী বলছেন বিশেষজ্ঞরা</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">১০.</span> পুশইনের এক বছর পর ৪
                     নাগরিককে ফেরত নিল ভারত</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">১১.</span> সরকারি টাকায় বিদেশ ভ্রমণ
                     নয়, গাড়ি কেনা বন্ধ</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">১২.</span> শিক্ষকরা যেন দ্বিতীয় কাজ
@@ -1052,18 +1084,21 @@
                     প্রধানমন্ত্রী</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">১৩.</span> উগ্রবাদী সংগঠনের সঙ্গে
                     জড়িত থাকার অভিযোগে দল থেকে স্থায়ী বহিষ্কার এনসিপি নেতা</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
-                    ><span class="counter">১৪.</span> বগুড়ায় হবে সামরিক ড্রোন
+                    ><span class="counter">১৪.</span>বগুড়ায় হবে সামরিক ড্রোন
                     কারখানা: সংসদে প্রধানমন্ত্রী</a
                   >
                 </li>
+
                 <li>
                   <a href="#"
                     ><span class="counter">১৫.</span> সংসার চালাতে শিক্ষকরা
