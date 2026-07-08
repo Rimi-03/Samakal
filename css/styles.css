@@ -125,47 +125,58 @@ img {
   gap: 15px;
 }
 
+/* --- Social Media Outlined Circles --- */
 .social-links {
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 
 .social-links a {
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--secondary-color);
-  color: #fff;
-  border-radius: 4px;
-  font-size: 13px;
-  transition: background 0.3s;
+  background: #ffffff;
+  color: #212529;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .social-links a:hover {
-  background: var(--primary-color);
-  color: #fff;
+  background: #f8f9fa;
+  border-color: #b5b5b5;
+  color: #000000;
 }
 
+/* --- Gray Text Action Buttons --- */
 .header-btns {
   display: flex;
   gap: 8px;
 }
 
 .header-btn {
-  padding: 5px 12px;
-  background: var(--primary-color);
-  color: #fff !important;
-  border-radius: 4px;
-  font-size: 13px;
+  display: inline-flex; /* Keeps layout rigid and square */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* 👈 FIXES THE TEXT WRAPPING BUG */
+  background-color: #ededed;
+  color: #212529;
+  padding: 6px 14px;
+  font-size: 14px;
   font-weight: 500;
-  transition: background 0.3s;
+  text-decoration: none;
+  border-radius: 2px;
+  height: 34px; /* Matches the exact height of the social circles */
+  transition: background-color 0.2s;
 }
 
 .header-btn:hover {
-  background: #9a0f15;
-  color: #fff !important;
+  background-color: #e0e0e0;
+  color: #000000;
 }
 
 /* Search Bar */
@@ -1896,7 +1907,7 @@ footer a:hover {
   align-items: center;
   padding: 5px 0;
   min-height: 60px; /* Allows the footer to shrink on mobile */
-  height: 95px; 
+  height: 95px;
 }
 
 /* Hide when closed via JavaScript */
