@@ -1507,6 +1507,84 @@ Responsive
   background: #fff;
 }
 
+/* Kaler Kheya Section */
+.section-title.kaler {
+  border-left-color: #1abc9c;
+}
+
+.kaler-item {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.kaler-item img {
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.kaler-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.kaler-list-item {
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.kaler-list-item:last-child {
+  border-bottom: none;
+}
+
+.kaler-list-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+/* Crime Section */
+.section-title.crime {
+  border-left-color: #c0392b;
+}
+
+.crime-item {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.crime-item img {
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.crime-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.crime-list-item {
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.crime-list-item:last-child {
+  border-bottom: none;
+}
+
+.crime-list-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
 /* Photo Gallery Section */
 .photo-gallery-section {
   padding: 30px 0;
