@@ -1670,7 +1670,7 @@ Responsive
 
 /* photo-galery */
 .photo-gallery-section {
-  background: #f7f1ea;
+  background: #f0f0f0;
 }
 .gallery-title {
   margin-top: 20px; /* Adds space ABOVE the title */
@@ -1725,106 +1725,162 @@ Responsive
   line-height: 1;
 }
 
-/* Footer */
+/* --- Footer General Styling --- */
 footer {
-  background: #1a1a1a;
-  padding: 40px 0 20px;
-  margin-top: 40px;
+  background-color: #d6d6d6; /* Light gray background matching the image */
+  color: #333333;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
 }
 
-.footer-top {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 20px;
+footer a {
+  color: #333333;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+footer a:hover {
+  color: #000000;
+  opacity: 0.8;
+}
+
+/* --- Top Section (2x5 Grid Link Menu) --- */
+.footerTopSection {
+  border-bottom: 1px solid #b5b5b5; /* Separation horizontal line */
+  padding-bottom: 25px;
   margin-bottom: 30px;
 }
 
-.footer-links {
+.footerTopSection ul {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
   padding: 0;
   margin: 0;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+  gap: 15px 20px; /* 15px gap vertically between the 2 rows */
 }
 
-.footer-links a {
-  color: #ccc;
-  font-size: 13px;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: var(--primary-color);
-}
-
-.footer-middle h5 {
-  color: #fff;
+.footerTopSection ul li {
+  position: relative;
   font-size: 14px;
-  margin-bottom: 10px;
 }
 
-.footer-middle p {
-  color: #999;
+/* Vertical grid lines for the top links */
+.footerTopSection ul li:not(:nth-child(5n))::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 15%;
+  height: 70%;
+  border-right: 1px solid #b5b5b5;
+}
+
+/* --- Middle Section Columns --- */
+.footerMiddleSection .col-lg-4 {
+  text-align: center;
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Vertical borders separating the 3 middle columns */
+@media (min-width: 992px) {
+  .footerMiddleSection .col-lg-4:not(:last-child) {
+    border-right: 1px solid #b5b5b5;
+  }
+}
+
+/* Left Column (Policies) */
+.footerMiddleSection .col-lg-4:first-child p {
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Middle Column (Editor Info & Address) */
+.footerMiddleSection h5 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.footerMiddleSection p {
+  margin-bottom: 4px;
   font-size: 13px;
-  margin-bottom: 5px;
 }
 
-.footer-middle a {
-  color: #ccc;
-}
-
-.footer-middle address {
-  color: #999;
+.footerMiddleSection address {
+  font-style: normal;
   font-size: 13px;
-  margin-top: 10px;
+  margin-top: 5px;
+  line-height: 1.4;
 }
 
-.follow-title {
-  color: #fff;
-  font-size: 16px;
+/* Right Column (Social Media & Logo) */
+.FSocialHeadLine {
+  font-size: 14px;
+  font-weight: normal;
   margin-bottom: 15px;
 }
 
-.follow-title span {
-  color: var(--primary-color);
+.FSocialHeadLine span {
+  color: #ff5e00; /* Orange color accent for 'সমকাল' */
+  font-weight: bold;
 }
 
-.footer-social {
+.FSocialShare ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
 }
 
-.footer-social a {
-  width: 36px;
-  height: 36px;
+/* Round Colored Social Icons */
+.FSocialShare ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #333;
-  color: #fff;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  transition: all 0.3s;
+  color: #ffffff;
+  font-size: 14px;
 }
 
-.footer-social a:hover {
-  background: var(--primary-color);
-  color: #fff;
+.FSocialShare ul li:nth-child(1) a {
+  background-color: #3b5998;
+} /* Facebook Blue */
+.FSocialShare ul li:nth-child(2) a {
+  background-color: #00acee;
+} /* Twitter Blue */
+.FSocialShare ul li:nth-child(3) a {
+  background-color: #0077b5;
+} /* LinkedIn Blue */
+.FSocialShare ul li:nth-child(4) a {
+  background-color: #ff0000;
+} /* YouTube Red */
+.FSocialShare ul li:nth-child(5) a {
+  background-color: #e1306c;
+} /* Instagram Pink */
+
+.FSocialShare ul li a:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
-.footer-logo img {
-  max-height: 50px;
+.Flogo img {
+  max-width: 160px;
   margin-bottom: 15px;
 }
 
-.copyright {
-  color: #666;
+.FCopyRight {
   font-size: 12px;
-}
-
-.copyright a {
-  color: #ccc;
+  color: #666666;
+  margin-top: 5px;
 }
 
 /* Back to Top */
