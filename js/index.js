@@ -1,3 +1,37 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Array of ad images (add your ad images here)
+  const ads = [
+    { image: "assets/images/ad1.jpg", url: "https://example.com/ad1" },
+    { image: "assets/images/ad1.avif", url: "https://example.com/ad2" },
+    { image: "assets/images/ad2.jpg", url: "https://example.com/ad3" },
+    { image: "assets/images/ad3.jpg", url: "https://example.com/ad4" },
+    { image: "assets/images/ad4.jpg", url: "https://example.com/ad5" },
+    { image: "assets/images/ad5.jpeg", url: "https://example.com/ad6" },
+    { image: "assets/images/ad6.jpg", url: "https://example.com/ad7" },
+  ];
+
+  // Select random ad
+  const randomIndex = Math.floor(Math.random() * ads.length);
+  const selectedAd = ads[randomIndex];
+
+  // Get elements
+  const adImage = document.getElementById("ad-image");
+  const adLink = document.getElementById("ad-link");
+
+  // Set ad content
+  if (selectedAd && adImage && adLink) {
+    adImage.src = selectedAd.image;
+    adImage.alt = "Advertisement";
+    adLink.href = selectedAd.url;
+
+    // Optional: Add loading state
+    adImage.addEventListener("load", function () {
+      this.style.opacity = "1";
+    });
+    adImage.style.opacity = "0";
+    adImage.style.transition = "opacity 0.5s ease";
+  }
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize all components
