@@ -73,14 +73,19 @@
                 </div>
                 <div class="header-btns d-flex gap-2">
                   <a href="#" target="_blank" class="header-btn">ই-পেপার</a>
-                  <a href="#" target="_blank" class="header-btn">English</a>
+                  <a href="#" id="lang-toggle-btn" class="header-btn"
+                    >English</a
+                  >
+                  <div
+                    id="google_translate_element"
+                    style="display: none"
+                  ></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Search Bar -->
       <div class="search-bar d-none" id="searchBar">
         <div class="container">
@@ -237,17 +242,32 @@
           </form>
         </div>
         <!-- Mobile Menu -->
-        <div class="mobile-menu d-none" id="mobileMenu">
+        <div class="mobile-menu" id="mobileMenu">
           <div class="mobile-menu-header">
-            <span class="mobile-date"
-              ><i class="fas fa-calendar"></i> বুধবার, ০৮ জুলাই ২০২৬</span
-            >
+            <div class="mobile-menu-top">
+              <button
+                class="mobile-menu-close"
+                id="mobileMenuClose"
+                aria-label="Close menu"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+              <img
+                src="https://samakal.com/frontend/media/common/logo.png"
+                alt="সমকাল"
+              />
+            </div>
+            <span class="mobile-date">
+              <i class="fas fa-calendar"></i> বৃহস্পতিবার, ০৯ জুলাই ২০২৬
+            </span>
+
             <div class="mobile-top-btns">
               <a href="#">English</a>
               <a href="#">লাইভ</a>
               <a href="#">ই-পেপার</a>
             </div>
           </div>
+
           <ul class="mobile-nav-list">
             <li><a href="#">সর্বশেষ</a></li>
             <li><a href="#">বাংলাদেশ</a></li>
@@ -305,6 +325,8 @@
           </ul>
         </div>
       </div>
+
+      <div id="mainNavSpacer"></div>
     </header>
 
     <main>
@@ -3081,6 +3103,20 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "bn",
+            includedLanguages: "en,bn",
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Custom JS -->
     <script src="js/index.js"></script>
   </body>

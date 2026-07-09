@@ -2,7 +2,7 @@
 @font-face {
   font-family: "SolaimanLipi";
   src: url("../assets/font/SolaimanLipi-Normal.ttf") format("truetype");
-  font-weight: 400; /* normal */
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -11,7 +11,7 @@
 @font-face {
   font-family: "SolaimanLipi";
   src: url("../assets/font/SolaimanLipi-Bold.ttf") format("truetype");
-  font-weight: 700; /* bold */
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -20,7 +20,7 @@
 @font-face {
   font-family: "SolaimanLipi";
   src: url("../assets/font/SolaimanLipi-Thin.ttf") format("truetype");
-  font-weight: 300; /* light/thin */
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -36,24 +36,18 @@
   --bg-dark: #1a1a2e;
 }
 
-/* Apply SolaimanLipi universally using '*' while explicitly safeguarding icons */
 *,
 *::before,
 *::after {
   font-family: "SolaimanLipi", sans-serif;
-
-  /* 1. Force crisp subpixel layout & smooth out jagged edges */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* 2. Enable advanced typography engines for perfect Bengali complex ligatures */
   text-rendering: optimizeLegibility;
   font-feature-settings:
     "liga" 1,
     "onum" 1;
 }
 
-/* Font Awesome icons fallback - FORCE keep their font engine */
 .fa,
 .fas,
 .far,
@@ -78,9 +72,8 @@
 }
 
 body {
-  color: #111111;
-  background-color: #fff;
   color: var(--text-dark);
+  background-color: #fff;
   line-height: 1.6;
   letter-spacing: -0.01em;
 }
@@ -159,10 +152,10 @@ img {
 }
 
 .header-btn {
-  display: inline-flex; /* Keeps layout rigid and square */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap; /* 👈 FIXES THE TEXT WRAPPING BUG */
+  white-space: nowrap;
   background-color: #ededed;
   color: #212529;
   padding: 6px 14px;
@@ -170,7 +163,7 @@ img {
   font-weight: 500;
   text-decoration: none;
   border-radius: 2px;
-  height: 34px; /* Matches the exact height of the social circles */
+  height: 34px;
   transition: background-color 0.2s;
 }
 
@@ -214,14 +207,45 @@ img {
   padding: 10px 15px !important;
 }
 
-/* Main Navigation */
+/* ============================================================
+   MAIN NAVIGATION (desktop) — sticky via JS `.is-fixed`, not
+   CSS `position:sticky` (which silently breaks if any ancestor
+   has overflow/transform/filter set — the original bug).
+   ============================================================ */
 .main-nav {
+  position: relative;
+  z-index: 1000;
   background: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 5px 0;
-  position: sticky;
+}
+
+.main-nav.is-fixed {
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  width: 100%;
+  animation: navSlideDown 0.25s ease;
+}
+
+@keyframes navSlideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.main-nav.scrolled {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Spacer that takes over the nav's height once it goes fixed,
+   so page content underneath doesn't jump. Height is set by JS. */
+#mainNavSpacer {
+  height: 0;
+  transition: height 0.1s;
 }
 
 .sticky-logo {
@@ -273,8 +297,20 @@ img {
 }
 
 .mega-menu-content {
-  width: 800px;
-  padding: 20px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 50% !important;
+  width: 85vw !important;
+  max-width: 800px !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px !important;
+  margin-top: 12px;
+  z-index: 99999 !important;
+  transform: translateX(-50%) !important;
+  box-sizing: border-box;
 }
 
 .mega-menu-content .col {
@@ -294,14 +330,24 @@ img {
   color: var(--primary-color);
 }
 
-/* Mobile Header */
+/* ============================================================
+   MOBILE HEADER
+   ============================================================ */
 .mobile-header {
   background: #fff;
   padding: 10px 0;
-  position: sticky;
-  top: 0;
+  position: relative; /* was `sticky` — same ancestor-fragility issue as
+                          desktop nav; now driven by JS `.is-fixed` below */
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-header.is-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .mobile-menu-btn,
@@ -311,6 +357,12 @@ img {
   font-size: 20px;
   cursor: pointer;
   padding: 5px 10px;
+  color: #333;
+}
+
+.mobile-menu-btn:hover,
+.mobile-search-btn:hover {
+  color: var(--primary-color);
 }
 
 .mobile-logo {
@@ -346,88 +398,440 @@ img {
   border-radius: 4px;
 }
 
+/* ============================================================
+   MOBILE MENU DRAWER
+   FIX: hidden using `transform: translateX(-100%)` instead of a
+   fixed `left: -320px`. A fixed px offset only fully hides a box
+   of the *exact* width it was calibrated for — any later rule
+   that changes the box's width (e.g. width:100% below ~575px)
+   left part of the drawer poking on-screen. Transform-based
+   hiding is resolution-independent, so this can't happen again
+   regardless of what width the drawer ends up being.
+   ============================================================ */
 .mobile-menu {
   position: fixed;
   top: 0;
   left: 0;
-  width: 280px;
+  width: 320px;
+  max-width: 100%;
   height: 100vh;
-  background: #fff;
-  z-index: 1001;
+  background: #ffffff;
+  z-index: 9999;
   overflow-y: auto;
   transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px 0;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+  display: block !important;
 }
 
 .mobile-menu.active {
-  transform: translateX(0);
+  /* transform: translateX(0); */
+  transform: translateX(0) !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
+/* Scrollbar polish inside the drawer (webkit browsers) */
+.mobile-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mobile-menu::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+
+/* --- Header block inside the drawer: logo row + date + pill buttons --- */
 .mobile-menu-header {
-  padding: 15px;
-  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  padding: 0 0 15px 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 14px 45px; /* side padding keeps the × button clear of the logo */
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.mobile-menu-top img {
+  max-height: 34px;
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--text-dark);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mobile-menu-close:hover {
+  background: rgba(181, 18, 27, 0.08);
+  color: var(--primary-color);
 }
 
 .mobile-date {
   display: block;
-  margin-bottom: 10px;
+  text-align: center;
   font-size: 13px;
-  color: var(--text-light);
+  color: #fff;
+  background: var(--secondary-color);
+  padding: 8px 10px;
+  margin: 0;
+}
+
+.mobile-date i {
+  color: var(--primary-color);
+  margin-right: 6px;
 }
 
 .mobile-top-btns {
   display: flex;
   gap: 8px;
+  padding: 10px 15px;
+  background: #f7f7f7;
+  border-bottom: 1px solid #eee;
 }
 
 .mobile-top-btns a {
-  padding: 5px 10px;
-  background: var(--primary-color);
-  color: #fff;
-  border-radius: 4px;
+  flex: 1;
+  text-align: center;
   font-size: 12px;
+  font-weight: 600;
+  padding: 7px 8px;
+  border-radius: 20px;
+  background: #fff;
+  color: var(--secondary-color);
+  border: 1px solid #ddd;
 }
 
+/* "লাইভ" gets the brand-red treatment, matching how the real
+   site draws attention to live coverage */
+.mobile-top-btns a:nth-child(2) {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+.mobile-top-btns a:hover {
+  opacity: 0.85;
+}
+
+/* --- Nav list ---
+   FIX: explicit :link / :visited resets with !important. Without
+   this, browsers apply their own default blue (unvisited) /
+   purple (visited) colors to anchors an author rule doesn't
+   clearly out-prioritize — this was showing up as stray
+   blue/purple/green link text in testing. */
 .mobile-nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 4px 0;
 }
 
 .mobile-nav-list li {
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.mobile-nav-list a {
-  display: block;
-  padding: 12px 15px;
-  font-size: 14px;
-  color: var(--text-dark);
-}
-
-.mobile-nav-list .has-submenu > a {
+.mobile-nav-list a,
+.mobile-nav-list a:link,
+.mobile-nav-list a:visited {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 13px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-dark) !important;
+  border-left: 3px solid transparent;
+  text-decoration: none !important;
+}
+
+.mobile-nav-list li a:hover,
+.mobile-nav-list li a:active,
+.mobile-nav-list li a:focus {
+  color: var(--primary-color) !important;
+  background: #fdf2f2;
+  border-left-color: var(--primary-color);
+}
+
+.has-submenu > a,
+.has-submenu > a:link,
+.has-submenu > a:visited {
+  color: var(--text-dark) !important;
+}
+
+.has-submenu > a i {
+  color: var(--primary-color) !important;
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* --- Submenus ---
+   FIX: re-assert list-style:none !important — stray circle
+   bullets were showing up in testing, meaning the base rule
+   below wasn't reliably winning against list default styles. */
+.mobile-submenu,
+.mobile-submenu li {
+  list-style: none !important;
 }
 
 .mobile-submenu {
-  display: none;
-  list-style: none;
-  background: var(--bg-light);
+  padding: 0;
+  margin: 0;
+  background: #faf9f9;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 .mobile-submenu.active {
-  display: block;
+  max-height: 500px;
 }
 
-.mobile-submenu a {
-  padding-left: 30px;
+.mobile-submenu li a,
+.mobile-submenu li a:link,
+.mobile-submenu li a:visited {
+  padding: 10px 15px 10px 30px !important;
   font-size: 13px;
+  color: #555 !important;
+  border-left: 3px solid transparent;
+  border-bottom: 1px solid #eee;
+  text-decoration: none !important;
 }
 
-/* Ad Section Styles */
+.mobile-submenu li a:hover,
+.mobile-submenu li a:focus {
+  color: var(--primary-color) !important;
+  background: #fdf2f2;
+  border-left-color: var(--primary-color);
+}
+
+/* Ensure body doesn't scroll when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Overlay behind the drawer (click-outside-to-close) */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-menu.active ~ .menu-overlay,
+.mobile-menu.active + .menu-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* Block clicks when visible */
+}
+
+/* Alternative: If overlay is inside the menu container */
+.mobile-menu.active .menu-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ============================================================
+   ≤365px responsiveness (small phones / folded outer screens)
+   ============================================================ */
+@media (max-width: 365px) {
+  .mobile-header .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .mobile-menu-btn,
+  .mobile-search-btn {
+    font-size: 18px;
+    padding: 5px 6px;
+  }
+
+  .mobile-logo {
+    max-height: 32px;
+  }
+
+  .mobile-menu {
+    width: 100%;
+  }
+
+  .mobile-menu-top {
+    padding: 14px 40px 14px 40px;
+  }
+
+  .mobile-date {
+    font-size: 11px;
+  }
+
+  .mobile-top-btns {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .mobile-top-btns a {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .mobile-nav-list a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .mobile-submenu li a {
+    padding: 8px 12px 8px 24px !important;
+    font-size: 13px;
+  }
+
+  .mobile-search-bar {
+    padding: 10px;
+  }
+
+  .mobile-search-bar input {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .mobile-search-bar button {
+    padding: 8px 12px;
+  }
+
+  .ad-image {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 320 / 90;
+  }
+
+  .ad-content-wrapper {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  #stickyAd {
+    height: auto;
+    min-height: 50px;
+    padding: 6px 0;
+  }
+
+  .close-sticky-ad {
+    width: 24px;
+    height: 24px;
+    top: -12px;
+    right: 8px;
+    font-size: 14px;
+  }
+
+  .back-to-top {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    right: 10px;
+    bottom: 70px;
+  }
+
+  .section-heading,
+  .section-title,
+  .section-title-simple {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .lead-title {
+    font-size: 15px !important;
+  }
+
+  .selected-title,
+  .category-title,
+  .world-title,
+  .health-title,
+  .tech-title,
+  .techlife-title {
+    font-size: 14px;
+  }
+
+  .sports-title,
+  .entertainment-main-title {
+    font-size: 14px;
+  }
+
+  .footerTopSection ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 15px;
+  }
+
+  .footerTopSection ul li:not(:nth-child(5n))::after {
+    display: none;
+  }
+
+  .footerTopSection ul li:not(:nth-child(2n))::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 15%;
+    height: 70%;
+    border-right: 1px solid #b5b5b5;
+  }
+
+  footer {
+    padding: 25px 0;
+    font-size: 13px;
+  }
+
+  .Flogo img {
+    max-width: 120px;
+  }
+
+  .prayer-times .table {
+    font-size: 11px;
+  }
+
+  .prayer-times .table td {
+    padding: 5px 6px;
+  }
+
+  .gallery-main-title {
+    font-size: 15px;
+  }
+
+  .gallery-item-title {
+    font-size: 12px;
+  }
+
+  .gallery-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* ============================================================
+   AD SECTION
+   ============================================================ */
 .ad-section {
   padding: 15px 0;
   background: #f8f9fa;
@@ -463,7 +867,6 @@ img {
   font-weight: 500;
 }
 
-/* Desktop specific */
 @media (min-width: 992px) {
   .ad-image {
     max-width: 970px;
@@ -472,7 +875,6 @@ img {
   }
 }
 
-/* Tablet */
 @media (min-width: 768px) and (max-width: 991px) {
   .ad-image {
     max-width: 728px;
@@ -481,7 +883,6 @@ img {
   }
 }
 
-/* Mobile */
 @media (max-width: 767px) {
   .ad-section {
     padding: 10px 0;
@@ -499,7 +900,6 @@ img {
   }
 }
 
-/* Optional: Dark mode support */
 @media (prefers-color-scheme: dark) {
   .ad-section {
     background: #1a1a1a;
@@ -510,7 +910,7 @@ img {
   }
 }
 
-/* hero sectionn  */
+/* hero section */
 .match-section-bg {
   background-color: #0b0a26;
 }
@@ -540,7 +940,6 @@ img {
   transform: scale(1.03);
 }
 
-/* Special Event Banner */
 .special-event-banner {
   margin-top: 20px;
 }
@@ -670,7 +1069,6 @@ HOME LEAD SECTION
   font-weight: 700;
 }
 
-/* Border bottom for news items */
 .border-bottom {
   border-bottom: 1px solid #ececec !important;
 }
@@ -1194,7 +1592,7 @@ Responsive
   padding: 8px 15px;
   background: rgba(255, 255, 255, 0.1);
   display: block;
-  width: fit-content; /* Keeps the background color hugging the text tightly */
+  width: fit-content;
   margin-left: auto;
   margin-right: auto;
   border-radius: 4px;
@@ -1597,7 +1995,6 @@ Responsive
 }
 
 /* Photo Gallery Section */
-/* Base Layout Card Styles */
 .gallery-card {
   display: block;
   position: relative;
@@ -1606,7 +2003,6 @@ Responsive
   text-decoration: none;
 }
 
-/* Image wrapper to crop zoom-in effect cleanly */
 .gallery-img-wrap {
   position: relative;
   overflow: hidden;
@@ -1617,7 +2013,6 @@ Responsive
   transition: transform 0.4s ease;
 }
 
-/* Dark gradient overlay behind the text so white font stays readable */
 .gallery-img-wrap::after {
   content: "";
   position: absolute;
@@ -1633,7 +2028,6 @@ Responsive
   transition: background 0.3s ease;
 }
 
-/* absolute Text Overlay placement */
 .gallery-text-overlay {
   position: absolute;
   bottom: 0;
@@ -1659,13 +2053,12 @@ Responsive
   font-size: 14px;
 }
 
-/* Top Left Icon Container */
 .gallery-icon {
   position: absolute;
   top: 10px;
   left: 10px;
   background: rgba(0, 0, 0, 0.6);
-  color: #ff6a00; /* Primary icon color */
+  color: #ff6a00;
   width: 35px;
   height: 35px;
   display: flex;
@@ -1679,16 +2072,15 @@ Responsive
     background 0.3s ease;
 }
 
-/* photo-galery */
 .photo-gallery-section {
   background: #f0f0f0;
 }
 .gallery-title {
-  margin-top: 20px; /* Adds space ABOVE the title */
+  margin-top: 20px;
   margin-bottom: 8px;
 }
 .gallery-card:hover .gallery-img-wrap img {
-  transform: scale(1.05); /* Softly zooms the image */
+  transform: scale(1.05);
 }
 
 .gallery-card:hover .gallery-img-wrap::after {
@@ -1696,226 +2088,47 @@ Responsive
     to top,
     rgba(0, 0, 0, 0.95) 0%,
     rgba(0, 0, 0, 0.2) 100%
-  ); /* Slightly darkens background */
+  );
 }
 
 .gallery-card:hover .gallery-main-title,
 .gallery-card:hover .gallery-item-title {
-  color: #ff9800; /* Text color turns into the warm orange/gold seen in your image */
+  color: #ff9800;
 }
 
 .gallery-card:hover .gallery-icon {
-  border-color: #ff9800; /* Displays the orange box border seen in your snapshot */
+  border-color: #ff9800;
   background: rgba(0, 0, 0, 0.85);
 }
 
-/* Sticky Footer Ad */
-.sticky-footer-ad {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  padding: 10px;
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-  z-index: 999;
-}
-
-.close-sticky-ad {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  background: var(--primary-color);
-  color: #fff;
-  border: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-}
-
-/* --- Footer General Styling --- */
-footer {
-  background-color: #d6d6d6; /* Light gray background matching the image */
-  color: #333333;
-  padding: 40px 0;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-footer a {
-  color: #333333;
-  text-decoration: none;
-  transition: opacity 0.2s ease-in-out;
-}
-
-footer a:hover {
-  color: #000000;
-  opacity: 0.8;
-}
-
-/* --- Top Section (2x5 Grid Link Menu) --- */
-.footerTopSection {
-  border-bottom: 1px solid #b5b5b5; /* Separation horizontal line */
-  padding-bottom: 25px;
-  margin-bottom: 30px;
-}
-
-.footerTopSection ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
-  gap: 15px 20px; /* 15px gap vertically between the 2 rows */
-}
-
-.footerTopSection ul li {
-  position: relative;
-  font-size: 14px;
-}
-
-/* Vertical grid lines for the top links */
-.footerTopSection ul li:not(:nth-child(5n))::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 15%;
-  height: 70%;
-  border-right: 1px solid #b5b5b5;
-}
-
-/* --- Middle Section Columns --- */
-.footerMiddleSection .col-lg-4 {
-  text-align: center;
-  padding: 0 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Vertical borders separating the 3 middle columns */
-@media (min-width: 992px) {
-  .footerMiddleSection .col-lg-4:not(:last-child) {
-    border-right: 1px solid #b5b5b5;
-  }
-}
-
-/* Left Column (Policies) */
-.footerMiddleSection .col-lg-4:first-child p {
-  margin-bottom: 15px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-}
-
-/* Middle Column (Editor Info & Address) */
-.footerMiddleSection h5 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.footerMiddleSection p {
-  margin-bottom: 4px;
-  font-size: 13px;
-}
-
-.footerMiddleSection address {
-  font-style: normal;
-  font-size: 13px;
-  margin-top: 5px;
-  line-height: 1.4;
-}
-
-/* Right Column (Social Media & Logo) */
-.FSocialHeadLine {
-  font-size: 14px;
-  font-weight: normal;
-  margin-bottom: 15px;
-}
-
-.FSocialHeadLine span {
-  color: #ff5e00; /* Orange color accent for 'সমকাল' */
-  font-weight: bold;
-}
-
-.FSocialShare ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px 0;
-  display: flex;
-  gap: 10px;
-}
-
-/* Round Colored Social Icons */
-.FSocialShare ul li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.FSocialShare ul li:nth-child(1) a {
-  background-color: #3b5998;
-} /* Facebook Blue */
-.FSocialShare ul li:nth-child(2) a {
-  background-color: #00acee;
-} /* Twitter Blue */
-.FSocialShare ul li:nth-child(3) a {
-  background-color: #0077b5;
-} /* LinkedIn Blue */
-.FSocialShare ul li:nth-child(4) a {
-  background-color: #ff0000;
-} /* YouTube Red */
-.FSocialShare ul li:nth-child(5) a {
-  background-color: #e1306c;
-} /* Instagram Pink */
-
-.FSocialShare ul li a:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
-}
-
-.Flogo img {
-  max-width: 160px;
-  margin-bottom: 15px;
-}
-
-.FCopyRight {
-  font-size: 12px;
-  color: #666666;
-  margin-top: 5px;
-}
-
-#sticky-ad-footer {
+/* ============================================================
+   STICKY FOOTER AD
+   FIX: hidden/shown via `.hidden` class (JS toggles this, not
+   inline styles — see script-fixed.js). Inline `style.display`
+   can never beat `display: flex !important` below, which was
+   why the close button used to appear to do nothing.
+   ============================================================ */
+#stickyAd {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   z-index: 2147483646;
-  background-color: rgba(250, 250, 250, 0.95);
-  border-top: 1px solid #ddd;
-  display: flex;
+  background-color: rgba(250, 250, 250, 0.98);
+  border-top: 1px solid #e0e0e0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  display: flex !important;
   justify-content: center;
   align-items: center;
-  padding: 5px 0;
-  min-height: 60px; /* Allows the footer to shrink on mobile */
-  height: 95px;
+  padding: 8px 0;
+  min-height: 60px;
+  height: 106px;
 }
 
-/* Hide when closed via JavaScript */
-#sticky-ad-footer.hidden {
+#stickyAd.hidden {
   display: none !important;
 }
 
-/* Container that limits max desktop size */
 .ad-content-wrapper {
   width: 100%;
   max-width: 970px;
@@ -1924,39 +2137,49 @@ footer a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 10px; /* Prevents edge clipping on mobile */
+  padding: 0 15px;
+  position: relative;
 }
 
-/* Responsively scales the 970px image on smaller mobile viewports */
 .ad-content-wrapper img {
   max-width: 100%;
   height: auto;
   max-height: 90px;
   object-fit: contain;
+  display: block;
 }
 
-/* Absolute positioned close button to keep it cleanly above the ad */
 .close-sticky-ad {
   position: absolute;
-  top: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  border: none;
-  border-radius: 0 0 0 4px;
-  padding: 4px 12px;
+  top: -16px;
+  right: 15px;
+  width: 28px;
+  height: 28px;
+  background: #212529;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: bold;
   z-index: 2147483647;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  padding: 0;
   line-height: 1;
 }
 
 .close-sticky-ad:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: #dc3545;
+  transform: scale(1.08);
 }
 
 /* Back to Top */
 .back-to-top {
+  margin-bottom: 25px;
   position: fixed;
   bottom: 100px;
   right: 20px;
@@ -1983,6 +2206,173 @@ footer a:hover {
 
 .back-to-top.show {
   display: flex;
+}
+
+/* --- Footer General Styling --- */
+footer {
+  background-color: #d6d6d6;
+  color: #333333;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+footer a {
+  color: #333333;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+footer a:hover {
+  color: #000000;
+  opacity: 0.8;
+}
+
+.footerTopSection {
+  border-bottom: 1px solid #b5b5b5;
+  padding-bottom: 25px;
+  margin-bottom: 30px;
+}
+
+.footerTopSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px 20px;
+}
+
+.footerTopSection ul li {
+  position: relative;
+  font-size: 14px;
+}
+
+.footerTopSection ul li:not(:nth-child(5n))::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 15%;
+  height: 70%;
+  border-right: 1px solid #b5b5b5;
+}
+
+.footerMiddleSection .col-lg-4 {
+  text-align: center;
+  padding: 0 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .footerMiddleSection .col-lg-4:not(:last-child) {
+    border-right: 1px solid #b5b5b5;
+  }
+}
+
+.footerMiddleSection .col-lg-4:first-child p {
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.footerMiddleSection h5 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.footerMiddleSection p {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.footerMiddleSection address {
+  font-style: normal;
+  font-size: 13px;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+.FSocialHeadLine {
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.FSocialHeadLine span {
+  color: #ff5e00;
+  font-weight: bold;
+}
+
+.FSocialShare ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.FSocialShare ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.FSocialShare ul li:nth-child(1) a {
+  background-color: #3b5998;
+}
+.FSocialShare ul li:nth-child(2) a {
+  background-color: #00acee;
+}
+.FSocialShare ul li:nth-child(3) a {
+  background-color: #0077b5;
+}
+.FSocialShare ul li:nth-child(4) a {
+  background-color: #ff0000;
+}
+.FSocialShare ul li:nth-child(5) a {
+  background-color: #e1306c;
+}
+
+.FSocialShare ul li a:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.Flogo img {
+  max-width: 160px;
+  margin-bottom: 15px;
+}
+
+.FCopyRight {
+  font-size: 12px;
+  color: #666666;
+  margin-top: 5px;
+}
+
+/* Google Translate cleanup */
+#google_translate_element,
+.goog-te-banner-frame,
+.goog-te-gadget,
+.goog-logo-link,
+.goog-te-gadget span {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.skiptranslate iframe {
+  display: none !important;
 }
 
 /* Responsive Adjustments */
@@ -2055,40 +2445,7 @@ footer a:hover {
   }
 }
 
-@media (max-width: 575px) {
-  .mobile-menu {
-    width: 100%;
-  }
-
-  .video-item .video-title {
-    font-size: 12px;
-  }
-
-  .photo-item {
-    margin-bottom: 10px;
-  }
-}
-
-/* Overlay for mobile menu */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Animation for items */
+/* Animation for fade-in items */
 @keyframes fadeIn {
   from {
     opacity: 0;
