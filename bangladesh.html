@@ -1,0 +1,1183 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>বাংলাদেশ - সমকাল</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    /> -->
+
+    <link rel="stylesheet" href="css/bangladesh.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-top d-none d-lg-block">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-4">
+              <div class="date-location">
+                <i class="fas fa-location-dot"></i> ঢাকা
+                <i class="fas fa-calendar-days"></i>
+                <span id="current-date">বুধবার, ০৮ জুলাই ২০২৬</span>
+              </div>
+            </div>
+            <div class="col-lg-4 text-center">
+              <a href="index.html" class="logo-link">
+                <img
+                  src="https://samakal.com/frontend/media/common/logo.png"
+                  alt="সমকাল"
+                  class="logo-img"
+                />
+              </a>
+            </div>
+            <div class="col-lg-4">
+              <div
+                class="header-actions d-flex justify-content-end align-items-center gap-3"
+              >
+                <div class="social-links">
+                  <a href="#" target="_blank"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="#" target="_blank" aria-label="Twitter">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="13"
+                      height="13"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                      />
+                    </svg>
+                  </a>
+                  <a href="#" target="_blank"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                  <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                  <a href="#" target="_blank"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a href="#" target="_blank"
+                    ><i class="fab fa-whatsapp"></i
+                  ></a>
+                </div>
+                <div class="header-btns d-flex gap-2">
+                  <a href="#" target="_blank" class="header-btn">ই-পেপার</a>
+                  <a href="#" id="lang-toggle-btn" class="header-btn"
+                    >English</a
+                  >
+                  <div
+                    id="google_translate_element"
+                    style="display: none"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Search Bar -->
+      <div class="search-bar d-none" id="searchBar">
+        <div class="container">
+          <form class="search-form">
+            <input type="text" placeholder="এখানে খুঁজুন..." />
+            <button type="submit"><i class="fas fa-search"></i></button>
+            <button type="button" class="close-search" id="closeSearch">
+              <i class="fas fa-times"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="navbar navbar-expand-lg main-nav d-none d-lg-block">
+        <div class="container">
+          <a href="#" class="sticky-logo">
+            <img
+              src="https://samakal.com/frontend/media/common/logo.png"
+              alt="সমকাল"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="#">সর্বশেষ</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="bangladesh.html">বাংলাদেশ</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">রাজনীতি</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">অর্থনীতি</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">বাজেট</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">বিশ্ব</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">খেলা</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">বিনোদন</a></li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  >সারাদেশ</a
+                >
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">ঢাকা</a></li>
+                  <li><a class="dropdown-item" href="#">চট্টগ্রাম</a></li>
+                  <li><a class="dropdown-item" href="#">রাজশাহী</a></li>
+                  <li><a class="dropdown-item" href="#">খুলনা</a></li>
+                  <li><a class="dropdown-item" href="#">বরিশাল</a></li>
+                  <li><a class="dropdown-item" href="#">সিলেট</a></li>
+                  <li><a class="dropdown-item" href="#">রংপুর</a></li>
+                  <li><a class="dropdown-item" href="#">ময়মনসিংহ</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">অপরাধ</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">মতামত</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">রাজধানী</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">লাইফস্টাইল</a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="#">ভিডিও</a></li>
+              <li class="nav-item dropdown mega-menu">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  >অন্যান্য</a
+                >
+                <div class="dropdown-menu mega-menu-content">
+                  <div class="row">
+                    <div class="col">
+                      <a class="dropdown-item" href="#">চতুরঙ্গ</a>
+                      <a class="dropdown-item" href="#">নারী দিবস</a>
+                      <a class="dropdown-item" href="#">সাহিত্য ও সংস্কৃতি</a>
+                      <a class="dropdown-item" href="#">ছবি</a>
+                      <a class="dropdown-item" href="#">প্রবাস</a>
+                    </div>
+                    <div class="col">
+                      <a class="dropdown-item" href="#">জীবন সংগ্রাম</a>
+                      <a class="dropdown-item" href="#">ভ্রমণ</a>
+                      <a class="dropdown-item" href="#">ফিচার</a>
+                      <a class="dropdown-item" href="#">শিক্ষা</a>
+                      <a class="dropdown-item" href="#">বিশেষ সমকাল</a>
+                    </div>
+                    <div class="col">
+                      <a class="dropdown-item" href="#">শিল্প-বাণিজ্য</a>
+                      <a class="dropdown-item" href="#">সাক্ষাৎকার</a>
+                      <a class="dropdown-item" href="#">প্রযুক্তি</a>
+                      <a class="dropdown-item" href="#">প্রিয় চট্টগ্রাম</a>
+                      <a class="dropdown-item" href="#">কালের খেয়া</a>
+                    </div>
+                    <div class="col">
+                      <a class="dropdown-item" href="#">শেয়ারবাজার</a>
+                      <a class="dropdown-item" href="#">সমকাল অনুসন্ধান</a>
+                      <a class="dropdown-item" href="#">অফবিট</a>
+                      <a class="dropdown-item" href="#">আর্কাইভ</a>
+                      <a class="dropdown-item" href="#">বইমেলা</a>
+                    </div>
+                    <div class="col">
+                      <a class="dropdown-item" href="#">মতামত</a>
+                      <a class="dropdown-item" href="#">চাকরি</a>
+                      <a class="dropdown-item" href="#">শিল্পমঞ্চ</a>
+                      <a class="dropdown-item" href="#">বিশেষ আয়োজন</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button class="search-toggle" id="searchToggle">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Header -->
+      <div class="mobile-header d-lg-none">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-3">
+              <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+              </button>
+            </div>
+            <div class="col-6 text-center">
+              <a href="index.html" class="mobile-logo-link">
+                <img
+                  src="https://samakal.com/frontend/media/common/logo.png"
+                  alt="সমকাল"
+                  class="mobile-logo"
+                />
+              </a>
+            </div>
+            <div class="col-3 text-end">
+              <button class="mobile-search-btn" id="mobileSearchBtn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search-bar d-none" id="mobileSearchBar">
+          <form>
+            <input type="text" placeholder="অনুসন্ধান করুন" />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <div class="mobile-menu-header">
+            <div class="mobile-menu-top">
+              <button
+                class="mobile-menu-close"
+                id="mobileMenuClose"
+                aria-label="Close menu"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+              <img
+                src="https://samakal.com/frontend/media/common/logo.png"
+                alt="সমকাল"
+              />
+            </div>
+            <span class="mobile-date">
+              <i class="fas fa-calendar"></i> বৃহস্পতিবার, ০৯ জুলাই ২০২৬
+            </span>
+
+            <div class="mobile-top-btns">
+              <a href="#">English</a>
+              <div id="google_translate_element" style="display: none"></div>
+              <a href="#">লাইভ</a>
+              <a href="#">ই-পেপার</a>
+            </div>
+          </div>
+
+          <ul class="mobile-nav-list">
+            <li><a href="#">সর্বশেষ</a></li>
+            <li><a href="bangladesh.html">বাংলাদেশ</a></li>
+            <li><a href="#">রাজনীতি</a></li>
+            <li><a href="#">অর্থনীতি</a></li>
+            <li><a href="#">বিশ্ব</a></li>
+            <li><a href="#">খেলা</a></li>
+            <li><a href="#">বিনোদন</a></li>
+            <li class="has-submenu">
+              <a href="#">সারাদেশ <i class="fas fa-chevron-down"></i></a>
+              <ul class="mobile-submenu">
+                <li><a href="#">ঢাকা</a></li>
+                <li><a href="#">চট্টগ্রাম</a></li>
+                <li><a href="#">রাজশাহী</a></li>
+                <li><a href="#">খুলনা</a></li>
+                <li><a href="#">বরিশাল</a></li>
+                <li><a href="#">সিলেট</a></li>
+                <li><a href="#">রংপুর</a></li>
+                <li><a href="#">ময়মনসিংহ</a></li>
+              </ul>
+            </li>
+            <li><a href="#">অপরাধ</a></li>
+            <li><a href="#">টেকলাইফ</a></li>
+            <li><a href="#">রাজধানী</a></li>
+            <li><a href="#">লাইফস্টাইল</a></li>
+            <li><a href="#">শৈলী</a></li>
+            <li><a href="#">কালের খেয়া</a></li>
+            <li class="has-submenu">
+              <a href="#">অন্যান্য <i class="fas fa-chevron-down"></i></a>
+              <ul class="mobile-submenu">
+                <li><a href="#">চতুরঙ্গ</a></li>
+                <li><a href="#">নারী দিবস</a></li>
+                <li><a href="#">সাহিত্য ও সংস্কৃতি</a></li>
+                <li><a href="#">জীবন সংগ্রাম</a></li>
+                <li><a href="#">ভ্রমণ</a></li>
+                <li><a href="#">ফিচার</a></li>
+                <li><a href="#">প্রবাস</a></li>
+                <li><a href="#">শিল্প-বাণিজ্য</a></li>
+                <li><a href="#">সাক্ষাৎকার</a></li>
+                <li><a href="#">প্রযুক্তি</a></li>
+                <li><a href="#">শেয়ারবাজার</a></li>
+                <li><a href="#">শিক্ষা</a></li>
+                <li><a href="#">সমকাল অনুসন্ধান</a></li>
+                <li><a href="#">বইমেলা</a></li>
+                <li><a href="#">মতামত</a></li>
+                <li><a href="#">চাকরি</a></li>
+                <li><a href="#">শিল্পমঞ্চ</a></li>
+                <li><a href="#">বিশেষ আয়োজন</a></li>
+                <li><a href="#">বিশেষ সমকাল</a></li>
+              </ul>
+            </li>
+            <li><a href="#">ছবি</a></li>
+            <li><a href="#">ভিডিও</a></li>
+            <li><a href="#">আর্কাইভ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="mainNavSpacer"></div>
+    </header>
+
+    <div class="ad-section">
+      <div class="container">
+        <div class="ad-wrapper">
+          <a href="#" target="_blank" rel="noopener noreferrer" id="ad-link">
+            <img src="" alt="Advertisement" class="ad-image" id="ad-image" />
+          </a>
+          <small class="ad-label">ADVERTISEMENT</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Content -->
+    <div class="container">
+      <div class="category-area">
+        <!-- Category Title -->
+        <div class="heading-title">
+          <a href="bangladesh.html">
+            <h1>বাংলাদেশ</h1>
+          </a>
+          <input class="d-none" id="catSlug" value="bangladesh" />
+          <input
+            class="d-none"
+            id="posCatID"
+            value="361440,361453,361438,361439,361443"
+          />
+        </div>
+
+        <!-- Sub Categories -->
+        <div class="sub-category-area">
+          <ul class="sub-category">
+            <li class="sub-list"><a href="#">শিক্ষা</a></li>
+            <li class="sub-list"><a href="#">আইন ও বিচার</a></li>
+            <li class="sub-list"><a href="#">স্বাস্থ্য</a></li>
+            <li class="sub-list"><a href="#">কৃষি</a></li>
+            <li class="sub-list"><a href="#">অন্যান্য</a></li>
+            <li class="sub-list"><a href="#">সংসদ</a></li>
+            <li class="sub-list"><a href="#">পরিবেশ</a></li>
+            <li class="sub-list"><a href="#">লড়াইয়ের মঞ্চ</a></li>
+          </ul>
+        </div>
+
+        <!-- Lead Article -->
+        <div class="category-lead">
+          <div class="row">
+            <div class="col-md-9">
+              <div class="DCatLead">
+                <a href="#">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <div class="img-box">
+                        <picture>
+                          <img
+                            src="https://samakal.com/media/imgAll/2026July/arif-hazra-1783565009.jpg"
+                            alt="সরকারি অনুদান কর্মকর্তার পকেটে"
+                            title="সরকারি অনুদান কর্মকর্তার পকেটে"
+                            class="img-fluid img100 rounded"
+                          />
+                        </picture>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="DCatLeadTitle">
+                        <h1>সরকারি অনুদান কর্মকর্তার পকেটে</h1>
+                        <p class="CatDesc">
+                          প্রকল্প বাস্তবায়নে সম্পৃক্ত কর্মকর্তা তাঁর স্ত্রীর
+                          নামে ভুয়া প্রতিষ্ঠান দেখিয়ে অনুদানের অর্থ আত্মসাৎ
+                          করেছেন। প্রাণিসম্পদ ও দুগ্ধজাত পণ্য (ডেইরি) উন্নয়নের
+                          জন্য নেওয়া একটি প্রকল্পে এ ঘটনা ঘটেছে।
+                        </p>
+                      </div>
+                      <span class="publishTime"
+                        >আপডেটঃ ০৯ জুলাই ২০২৬ | ১০:১৬</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="DRightSideAdd MobileHide">
+                <div class="ad-placeholder" style="width: 300px; height: auto">
+                  <img src="https://tpc.googlesyndication.com/daca_images/simgad/5704959657751265301" alt="ad" srcset="">
+                </div>
+              </div>
+              <!-- <div class="DRightSideAdd MobileShow text-center">
+                <div class="ad-placeholder" style="width: 300px; height: 250px">
+                  Ad 300×250
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Cards -->
+        <div class="category-card-area">
+          <div class="row">
+            <div class="col-md-3 d-flex">
+              <div class="Catcards align-items-stretch">
+                <a href="#">
+                  <div class="img-box">
+                    <picture>
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/hc-1783569966.jpg"
+                        alt="সংবিধানে ফিরল তত্ত্বাবধায়ক সরকার ব্যবস্থা"
+                        class="img-fluid img100"
+                      />
+                    </picture>
+                  </div>
+                  <div class="CatCardTitle">
+                    <h3>সংবিধানে ফিরল তত্ত্বাবধায়ক সরকার ব্যবস্থা</h3>
+                  </div>
+                  <span class="publishTime">আপডেটঃ ০৯ জুলাই ২০২৬ | ১০:৫৫</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div class="Catcards align-items-stretch">
+                <a href="#">
+                  <div class="img-box">
+                    <picture>
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/arif-hazra-1783564848.jpg"
+                        alt="মাছ-মাংসের বাজার চড়া সবজিতে কিছুটা স্বস্তি"
+                        class="img-fluid img100"
+                      />
+                    </picture>
+                  </div>
+                  <div class="CatCardTitle">
+                    <h3>
+                      <span class="subHeading">বাজারদর / </span>মাছ-মাংসের বাজার
+                      চড়া সবজিতে কিছুটা স্বস্তি
+                    </h3>
+                  </div>
+                  <span class="publishTime">আপডেটঃ ০৯ জুলাই ২০২৬ | ০৯:৩৩</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div class="Catcards align-items-stretch">
+                <a href="#">
+                  <div class="img-box">
+                    <picture>
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/arif-hazra-1783564922.jpg"
+                        alt="জাতিসংঘে স্থায়ী প্রতিনিধি হলেন আইরিন খান"
+                        class="img-fluid img100"
+                      />
+                    </picture>
+                  </div>
+                  <div class="CatCardTitle">
+                    <h3>জাতিসংঘে স্থায়ী প্রতিনিধি হলেন আইরিন খান</h3>
+                  </div>
+                  <span class="publishTime">আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:৫৫</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div class="Catcards align-items-stretch">
+                <a href="#">
+                  <div class="img-box">
+                    <picture>
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/high-17672749321-17833502851-17834964391-1783565533.jpg"
+                        alt="পঞ্চদশ সংশোধনী নিয়ে আপিল বিভাগের রায় আজ"
+                        class="img-fluid img100"
+                      />
+                    </picture>
+                  </div>
+                  <div class="CatCardTitle">
+                    <h3>পঞ্চদশ সংশোধনী নিয়ে আপিল বিভাগের রায় আজ</h3>
+                  </div>
+                  <span class="publishTime">আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:৫২</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Ad -->
+        <div class="ad-area d-flex justify-content-center">
+          <div class="MobileHide">
+            <div class="ad-placeholder" style="width: 728px; height: 90px ">
+              <img src="https://tpc.googlesyndication.com/daca_images/simgad/15583137763071275853" alt="ad" srcset="">
+            </div>
+          </div>
+          <div class="MobileShow">
+            <div class="ad-placeholder" style="width: 300px; height: 250px">
+              <img src="https://tpc.googlesyndication.com/simgad/8933156902314117404" alt="ad" srcset="">
+            </div>
+          </div>
+        </div>
+
+        <!-- Three-column news list -->
+        <div class="CatSubList-area">
+          <div class="row">
+            <!-- Left sidebar -->
+            <div class="col-lg-3">
+              <div class="DRightSideAdd mt-3 mb-4 MobileHide">
+                <div class="ad-placeholder" style="width: 300px; height: 250px">
+                  <img src="https://tpc.googlesyndication.com/simgad/397600828102669609" alt="ad" srcset="">
+                </div>
+              </div>
+            </div>
+
+            <!-- Center news list -->
+            <div class="col-lg-6" id="categoryContentList">
+                
+              <div id="data-wrapper">
+                <!-- Item 1 (visible) -->
+                <div class="CatListNews">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            <span class="subHeading"
+                              >চট্টগ্রাম ও সীতাকুণ্ডে আরও দুই শিশুর প্রাণহানি /
+                            </span>
+                            রোহিঙ্গা শিবিরে পাহাড় ধসে ৭ শিক্ষার্থী ও শিক্ষকের
+                            মৃত্যু
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            টানা বর্ষণের মধ্যে কক্সবাজার ও চট্টগ্রামের তিনটি
+                            পৃথক পাহাড় ধসে ৯ শিশুসহ ১০ জনের মৃত্যু হয়েছে।
+                            গতকাল বুধবার এসব দুর্ঘটনা ঘটে। এর মধ্যে কক্সবাজারের
+                            উখিয়ার রোহিঙ্গা আশ্রয়শিবিরে প্রাণ ঝরেছে একটি
+                            মাদ্রাসার সাত শিশু শিক্ষার্থী ও এক শিক্ষকের।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:৪৭</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/arif-hazra-1783565279.jpg"
+                              alt="রোহিঙ্গা শিবিরে পাহাড় ধসে ৭ শিক্ষার্থী ও শিক্ষকের মৃত্যু"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Item 2 (visible) -->
+                <div class="CatListNews">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            কুমিল্লায় আর্জেন্টিনা সমর্থকদের হামলায় অটোচালক
+                            নিহত
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            কুমিল্লায় আর্জেন্টিনা সমর্থকদের হামলায় এক
+                            অটোরিকশাচালক নিহত হয়েছেন। ঝিনাইদহের কালীগঞ্জে
+                            আর্জেন্টিনার সমর্থকদের হামলায় ব্রাজিল সমর্থক জখম
+                            এবং শৈলকুপা উপজেলায় খেলা দেখতে দেখতে হঠাৎ মৃত্যু
+                            হয়েছে এক আর্জেন্টিনা সমর্থকের।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:১৭</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/25-1783563442.jpg"
+                              alt="কুমিল্লায় আর্জেন্টিনা সমর্থকদের হামলায় অটোচালক নিহত"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Item 3 (visible) -->
+                <div class="CatListNews">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            ৬ বিভাগে টানা বৃষ্টি, উত্তর পূর্বাঞ্চলে বন্যার শঙ্কা
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            মৌসুমি বায়ুর সক্রিয় প্রভাবে দেশের ছয়টি বিভাগের
+                            অধিকাংশ এলাকায় ভারী থেকে অতি ভারী বৃষ্টিপাত অব্যাহত
+                            রয়েছে। টানা বৃষ্টি ও পাহাড়ি ঢলে পার্বত্য
+                            চট্টগ্রামসহ কয়েকটি জেলায় আকস্মিক বন্যা ও
+                            জলাবদ্ধতার আশঙ্কা দেখা দিয়েছে।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:১৬</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/24-1783563368.jpg"
+                              alt="৬ বিভাগে টানা বৃষ্টি"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Item 4 (visible) -->
+                <div class="CatListNews">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>মানব পাচার রোধে একসঙ্গে কাজ করার অঙ্গীকার</h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            বাংলাদেশ ও ভিয়েতনামের স্বরাষ্ট্রমন্ত্রীদের মধ্যে
+                            উচ্চপর্যায়ের দ্বিপক্ষীয় বৈঠক অনুষ্ঠিত হয়েছে। গত
+                            মঙ্গলবার যুক্তরাষ্ট্রের নিউইয়র্কে জাতিসংঘ সদরদপ্তরে
+                            এ বৈঠক হয়।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:১৩</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/arif-hazra-1783563185.jpg"
+                              alt="মানব পাচার রোধে একসঙ্গে কাজ করার অঙ্গীকার"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Item 5 (visible) -->
+                <div class="CatListNews extra-news">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            <span class="subHeading"
+                              >ডা. জাহেদ উর রহমান বললেন /
+                            </span>
+                            জুলাইয়ের লক্ষ্য ছিল শেখ হাসিনার পতন ও গণতান্ত্রিক
+                            বাংলাদেশ
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            তথ্য ও সম্প্রচার এবং সংস্কৃতি মন্ত্রণালয়ের উপদেষ্টা
+                            ডা. জাহেদ উর রহমান বলেছেন, জুলাই অভ্যুত্থানের অভিন্ন
+                            লক্ষ্য ছিল তৎকালীন প্রধানমন্ত্রী শেখ হাসিনার পতন এবং
+                            একটি গণতান্ত্রিক বাংলাদেশ প্রতিষ্ঠা করা।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:১০</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/arif-hazra-1783563023.jpg"
+                              alt="জুলাইয়ের লক্ষ্য ছিল শেখ হাসিনার পতন"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Item 6 (visible) -->
+                <div class="CatListNews extra-news">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            সংস্কার নিয়ে জনগণের সঙ্গে প্রতারণা করছে বিএনপি
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            জুলাই সনদ বাস্তবায়ন আদেশকে বিএনপি নেতারা অন্তহীন
+                            প্রতারণার দলিল বলায় সমালোচনা করেছেন জামায়াতে
+                            ইসলামীর আমির ডা. শফিকুর রহমান।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:০৯</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/arif-hazra-1783562946.jpg"
+                              alt="সংস্কার নিয়ে জনগণের সঙ্গে প্রতারণা করছে বিএনপি"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <!-- Items 7-10 (hidden, revealed on load more) -->
+                <div class="CatListNews extra-news" style="display: none">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            <span class="subHeading"
+                              >চট্টগ্রাম ও তিন পার্বত্য জেলা /
+                            </span>
+                            ভারী বৃষ্টি ও ঢলের পানিতে জনজীবন বিপর্যস্ত
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            টানা তিন দিনের ভারী বর্ষণের পানিতে গতকাল বুধবারও
+                            চট্টগ্রাম ছিল দুর্ভোগের নগরী। বেশির ভাগ নিচু এলাকায়
+                            ঘরবাড়িতে হাঁটুপানি।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০৮:০৬</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/arif-hazra-1783562425.jpg"
+                              alt="ভারী বৃষ্টি ও ঢলের পানিতে জনজীবন বিপর্যস্ত"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="CatListNews extra-news" style="display: none">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            মন্ত্রী বললেন মালয়েশিয়ার শ্রমবাজার খুলেছে,
+                            মন্ত্রণালয় করল সতর্ক
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            প্রবাসী কল্যাণমন্ত্রী আরিফুল হক চৌধুরী জানিয়েছিলেন,
+                            গত সোমবার থেকে মালয়েশিয়ার শ্রমবাজার উন্মুক্ত
+                            হয়েছে বাংলাদেশি কর্মীদের জন্য।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০১:০২</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/untitled-4-1783537333.jpg"
+                              alt="মন্ত্রী বললেন মালয়েশিয়ার শ্রমবাজার খুলেছে"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="CatListNews extra-news" style="display: none">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>সরকারি হিসাব কমিটির সভাপতি জামায়াতের</h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            সরকারি হিসাব কমিটির সভাপতি হয়েছেন বিরোধীদলীয়
+                            উপনেতা ও কুমিল্লা-১১ আসনের সংসদ সদস্য (এমপি) ডা.
+                            সৈয়দ আবদুল্লাহ মোহাম্মদ তাহের।
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০০:৪৮</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/untitled-3-1783536502.jpg"
+                              alt="সরকারি হিসাব কমিটির সভাপতি জামায়াতের"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="CatListNews extra-news" style="display: none">
+                  <a href="#">
+                    <div class="row d-flex justify-content-end">
+                      <div class="col-md-6 col-6">
+                        <div class="CatListhead">
+                          <h3>
+                            প্রাথমিক-মাধ্যমিক পর্যায়ে শিক্ষকদের সম্মানি
+                            পর্যায়ক্রমে বাড়ানো হবে: প্রধানমন্ত্রী
+                          </h3>
+                        </div>
+                        <div class="ListDesc">
+                          <p>
+                            প্রধানমন্ত্রী তারেক রহমান বলেছেন, 'সারাদেশে প্রাথমিক
+                            ও মাধ্যমিক পর্যায়ে শিক্ষকদের সম্মানি পর্যায়ক্রমে
+                            বাড়ানো হবে।'
+                          </p>
+                        </div>
+                        <span class="publishTime"
+                          >আপডেটঃ ০৯ জুলাই ২০২৬ | ০০:৪১</span
+                        >
+                      </div>
+                      <div class="col-md-6 col-6">
+                        <div class="img-box">
+                          <picture>
+                            <img
+                              src="https://samakal.com/media/imgAll/2026July/SM/untitled-2-1783536116.jpg"
+                              alt="প্রাথমিক-মাধ্যমিক পর্যায়ে শিক্ষকদের সম্মানি"
+                              class="img-fluid img100 rounded"
+                            />
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Spinner (hidden by default) -->
+              <div class="auto-load text-center">
+    <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" height="60" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+      <path fill="#cf1010" d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+        <animateTransform attributeName="transform" attributeType="XML" type="rotate" dur="1s" from="0 50 50" to="360 50 50" repeatCount="indefinite" />
+      </path>
+    </svg>
+  </div>
+
+              <!-- Load More Button -->
+              <div class="read-more-btn d-flex justify-content-center">
+                <a type="button" class="load-more-data" id="loadMoreBtn">আরও</a>
+              </div>
+            </div>
+
+            <!-- Right sidebar -->
+            <div class="col-lg-3">
+              <div class="DRightSideAdd mt-3 mb-4 MobileHide">
+                <div class="ad-placeholder" style="width: 300px; height: 250px">
+                  <img src="https://tpc.googlesyndication.com/simgad/397600828102669609" alt="ad" srcset="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section mt-3 py-5">
+      <div class="container">
+        <!-- Top Links (5 Columns on Desktop, 2 Columns on Mobile) -->
+        <div class="footer-top pb-4 mb-4 border-bottom">
+          <div
+            class="row row-cols-2 row-cols-lg-5 g-3 text-center text-secondary"
+          >
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark"
+                >বিশেষ আয়োজন</a
+              >
+            </div>
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark">কালের খেয়া</a>
+            </div>
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark">বিশেষ সমকাল</a>
+            </div>
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark"
+                >বিজ্ঞাপন মূল্য তালিকা</a
+              >
+            </div>
+            <div class="col">
+              <a href="#" class="text-decoration-none text-dark"
+                >ইউনিকোড কনভার্টার</a
+              >
+            </div>
+
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark">ফিচার</a>
+            </div>
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark">আর্কাইভ</a>
+            </div>
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark">ছবি</a>
+            </div>
+            <div class="col border-end-custom">
+              <a href="#" class="text-decoration-none text-dark">ভিডিও</a>
+            </div>
+            <div class="col">
+              <a href="#" class="text-decoration-none text-dark">ই-পেপার</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Section -->
+        <div class="row gy-4 align-items-center text-center text-lg-start">
+          <!-- Left Column (Policies) -->
+          <div class="col-lg-4 border-end-lg py-2 text-center">
+            <ul class="list-unstyled footer-list mb-0 lh-lg font-weight-bold">
+              <li>
+                <a href="#" class="text-decoration-none text-dark fw-bold"
+                  >PRIVACY POLICY</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-dark fw-bold"
+                  >TERMS OF USE</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-dark fw-bold"
+                  >SAMAKAL ALL RIGHTS RESERVED</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Middle Column (Contact/Editorial Info) -->
+          <div class="col-lg-4 border-end-lg py-2 text-center">
+            <h5 class="fw-bold mb-2 small-heading">
+              সম্পাদক : শাহেদ মুহাম্মদ আলী
+            </h5>
+            <h5 class="fw-bold mb-3 small-heading">
+              প্রকাশক : আবুল কালাম আজাদ
+            </h5>
+            <p class="mb-1 text-muted">
+              ফোন :
+              <a href="tel:55029832-38" class="text-decoration-none text-dark"
+                >৫৫০২৯৮৩২-৩৮</a
+              >
+            </p>
+            <p class="mb-1 text-muted">
+              বিজ্ঞাপন :
+              <a
+                href="tel:+8801714080378"
+                class="text-decoration-none text-dark"
+                >+৮৮০১৭১৪০৮০৩৭৮</a
+              >
+            </p>
+            <p class="mb-2 text-muted">
+              ই-মেইল :
+              <a
+                href="mailto:samakalad@gmail.com"
+                class="text-decoration-none text-dark"
+                >samakalad@gmail.com</a
+              >
+            </p>
+            <p class="mb-0 text-muted small">
+              টাইমস মিডিয়া ভবন (৫ম তলা), ৩৮৭ তেজগাঁও শিল্প এলাকা, ঢাকা-১২০৮
+            </p>
+          </div>
+
+          <!-- Right Column (Social Media, Logo & Copyright) -->
+          <div class="col-lg-4 py-2 text-center">
+            <h5 class="mb-3 text-dark">
+              ফলো করুন <span class="text-danger fw-bold">সমকাল</span>-এর খবর
+            </h5>
+
+            <!-- Circle Social Icons -->
+            <div class="footer-social d-flex justify-content-center gap-2 mb-3">
+              <a
+                href="#"
+                class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  width: 36px;
+                  height: 36px;
+                  background-color: #3b5998;
+                  border: none;
+                "
+                ><i class="fab fa-facebook-f text-white"></i
+              ></a>
+              <a
+                href="#"
+                class="btn btn-info rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  width: 36px;
+                  height: 36px;
+                  background-color: #00acee;
+                  border: none;
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="btn btn-secondary rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  width: 36px;
+                  height: 36px;
+                  background-color: #0077b5;
+                  border: none;
+                "
+                ><i class="fab fa-linkedin-in text-white"></i
+              ></a>
+              <a
+                href="#"
+                class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  width: 36px;
+                  height: 36px;
+                  background-color: #ff0000;
+                  border: none;
+                "
+                ><i class="fab fa-youtube text-white"></i
+              ></a>
+              <a
+                href="index.html"
+                class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  width: 36px;
+                  height: 36px;
+                  background-color: #e1306c;
+                  border: none;
+                "
+                ><i class="fab fa-instagram text-white"></i
+              ></a>
+            </div>
+
+            <div class="mb-2">
+              <img
+                src="https://samakal.com/frontend/media/common/logo.png"
+                class="img-fluid footer-logo"
+                alt="Samakal Logo"
+                style="max-width: 140px"
+              />
+            </div>
+
+            <div class="footer-bottom text-muted small mt-2">
+              © ২০০৫–২০২৬ <strong>সমকাল</strong> কর্তৃক সর্বস্বত্ব সংরক্ষিত।
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky Footer Ad -->
+    <div id="stickyAd" class="sticky-footer-ad">
+      <!-- Close Button -->
+      <button class="close-sticky-ad" id="closeStickyAd">&times;</button>
+
+      <!-- Single Ad Container -->
+      <div class="ad-content-wrapper">
+        <!-- 👇 Paste your image tag here 👇 -->
+        <img
+          src="https://tpc.googlesyndication.com/simgad/16316211469821707285"
+          alt="Advertisement"
+          class="img-fluid"
+        />
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "bn",
+            includedLanguages: "en,bn",
+            autoDisplay: false,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

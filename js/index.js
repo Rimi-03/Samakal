@@ -522,4 +522,93 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Category Page Load More Functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  const autoLoadSpinner = document.querySelector(".auto-load");
+  const allNewsItems = document.querySelectorAll(".CatListNews");
+  let isLoading = false;
+
+  // --- 1. INITIAL SETUP ---
+  // Hide all news items immediately on page refresh
+  allNewsItems.forEach((item) => (item.style.display = "none"));
+
+  // Keep the spinner visible to signal loading
+  if (autoLoadSpinner) autoLoadSpinner.style.display = "block";
+  if (loadMoreBtn) loadMoreBtn.style.display = "inline-flex";
+  
+  // Reveal first 4 items after 1 second
+  setTimeout(function () {
+    let initialCount = 0;
+    allNewsItems.forEach(function (item) {
+      if (!item.classList.contains("extra-news") && initialCount < 4) {
+        item.style.display = "block";
+        initialCount++;
+      }
+    });
+
+    // Start looking for the spinner to auto-load the rest
+    initAutoScrollLoad();
+  }, 1000);
+
+  // --- 2. CONTINUOUS AUTO-RELOAD LOGIC ---
+  function loadMoreNews() {
+    if (isLoading) return;
+    isLoading = true;
+
+    // Show the spinner while injecting the next batch
+    if (autoLoadSpinner) autoLoadSpinner.style.display = "block";
+
+    setTimeout(function () {
+      const hiddenNews = Array.from(
+        document.querySelectorAll(".extra-news"),
+      ).filter((item) => item.style.display === "none");
+
+      // Reveal next 2 items
+      let loadedCount = 0;
+      hiddenNews.forEach(function (item) {
+        if (loadedCount < 2) {
+          item.style.display = "block";
+          loadedCount++;
+        }
+      });
+
+      // Check if any hidden items remain
+      const remainingHidden = Array.from(
+        document.querySelectorAll(".extra-news"),
+      ).filter((item) => item.style.display === "none");
+
+      if (remainingHidden.length === 0) {
+        // Stop spinning and completely clear the loader elements if everything is fetched
+        if (autoLoadSpinner) autoLoadSpinner.remove();
+        if (loadMoreBtn) loadMoreBtn.closest(".read-more-btn").remove();
+      } else {
+        // Briefly hide the spinner to allow it to trigger again on the next scroll boundary
+        if (autoLoadSpinner) autoLoadSpinner.style.display = "none";
+      }
+
+      isLoading = false;
+    }, 1000); // 1-second delay per batch
+  }
+
+  // --- 3. SCROLL DETECTOR ---
+  function initAutoScrollLoad() {
+    if (!autoLoadSpinner) return;
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        // If the spinner rolls into the viewport and we aren't already loading, fetch next batch
+        if (entries[0].isIntersecting && !isLoading) {
+          loadMoreNews();
+        }
+      },
+      {
+        rootMargin: "0px 0px 100px 0px", // Triggers 100px before the spinner hits the screen edge for smoother UX
+      },
+    );
+
+    observer.observe(autoLoadSpinner);
+  }
+});
+
 console.log("Samakal Clone - Responsive Bootstrap Design Loaded Successfully");
