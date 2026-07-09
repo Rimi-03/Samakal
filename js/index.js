@@ -10,22 +10,43 @@ document.addEventListener("DOMContentLoaded", function () {
     { image: "assets/images/ad6.jpg", url: "https://example.com/ad7" },
   ];
 
-  const randomIndex = Math.floor(Math.random() * ads.length);
-  const selectedAd = ads[randomIndex];
+  // 1. Get or initialize the list of available ad indexes
+  let availableIndexes = JSON.parse(localStorage.getItem("availableAdIndexes"));
 
+  if (!availableIndexes || availableIndexes.length === 0) {
+    // Fill the array with indexes [0, 1, 2, 3, 4, 5, 6]
+    availableIndexes = Array.from({ length: ads.length }, (_, i) => i);
+  }
+
+  // 2. Pick a random item out of the REMAINING available options
+  const poolIndex = Math.floor(Math.random() * availableIndexes.length);
+  const adIndex = availableIndexes[poolIndex];
+
+  // 3. Remove the chosen index from the pool so it won't repeat
+  availableIndexes.splice(poolIndex, 1);
+  localStorage.setItem("availableAdIndexes", JSON.stringify(availableIndexes));
+
+  // 4. Display the selected ad
+  const selectedAd = ads[adIndex];
   const adImage = document.getElementById("ad-image");
   const adLink = document.getElementById("ad-link");
 
   if (selectedAd && adImage && adLink) {
-    adImage.src = selectedAd.image;
-    adImage.alt = "Advertisement";
     adLink.href = selectedAd.url;
+    adImage.alt = "Advertisement";
+
+    adImage.style.opacity = "0";
+    adImage.style.transition = "opacity 0.5s ease";
 
     adImage.addEventListener("load", function () {
       this.style.opacity = "1";
     });
-    adImage.style.opacity = "0";
-    adImage.style.transition = "opacity 0.5s ease";
+
+    adImage.src = selectedAd.image;
+
+    if (adImage.complete) {
+      adImage.style.opacity = "1";
+    }
   }
 });
 
