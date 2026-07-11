@@ -96,7 +96,8 @@ img {
 /* Header Top */
 .header-top {
   background: #fff;
-  padding: 10px 0;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -115,18 +116,22 @@ img {
 }
 
 .header-actions {
-  gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px !important;
 }
 
 /* --- Social Media Outlined Circles --- */
 .social-links {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 6px;
 }
 
 .social-links a {
   width: 34px;
-  height: 34px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +153,7 @@ img {
 /* --- Gray Text Action Buttons --- */
 .header-btns {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .header-btn {
@@ -216,8 +221,14 @@ img {
   position: relative;
   z-index: 1000;
   background: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 5px 0;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  box-shadow: none;
+  padding: 0;
+}
+.main-nav .container {
+  display: flex;
+  align-items: center;
 }
 
 .main-nav.is-fixed {
@@ -225,7 +236,9 @@ img {
   top: 0;
   left: 0;
   width: 100%;
+  background: #fff;
   animation: navSlideDown 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
 @keyframes navSlideDown {
@@ -240,6 +253,9 @@ img {
 .main-nav.scrolled {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
+.main-nav.scrolled .nav-link {
+  font-size: 16px;
+}
 
 /* Spacer that takes over the nav's height once it goes fixed,
    so page content underneath doesn't jump. Height is set by JS. */
@@ -250,26 +266,38 @@ img {
 
 .sticky-logo {
   display: none;
+  margin-right: 15px;
 }
 
 .sticky-logo img {
-  max-height: 40px;
+  max-height: 30px;
 }
 
 .main-nav.scrolled .sticky-logo {
   display: block;
+  padding: 15px;
+}
+
+#mainNav {
+  justify-content: center;
 }
 
 .navbar-nav {
-  gap: 5px;
+  margin: auto;
+  gap: 0;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 0;
 }
 
 .nav-link {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   padding: 8px 12px !important;
   color: var(--text-dark) !important;
-  border-radius: 4px;
+  border-radius: 0;
   transition: all 0.3s;
 }
 
