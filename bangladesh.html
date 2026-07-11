@@ -236,119 +236,191 @@
 
       <!-- Mobile Header -->
       <div class="mobile-header d-lg-none">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-              </button>
+        <div class="mobile-topbar d-flex align-items-center">
+          <!-- Hamburger/Menu Button -->
+          <div class="topbar-close">
+            <span
+              id="menu-button"
+              class="menu-button"
+              onclick="myMenuBtnChng()"
+            >
+              <i class="fas fa-bars"></i>
+            </span>
+          </div>
+
+          <div id="mobile-nav" class="MobileMenu">
+            <!-- Search bar (hidden by default) -->
+            <div class="search_block" id="searchBlock" style="display: none">
+              <div class="container">
+                <form
+                  name="frmSearch"
+                  action="https://www.google.com"
+                  target="_blank"
+                  method="get"
+                >
+                  <div class="search_logo d-flex align-items-center gap-2">
+                    <input type="hidden" name="cx" value="d540ac00b35dc4da6" />
+                    <input type="hidden" name="gsc.sort" value="date" />
+                    <input type="hidden" name="ie" value="utf-8" />
+                    <input
+                      type="text"
+                      name="q"
+                      id="search"
+                      class="form-control"
+                      placeholder="অনুসন্ধান করুন"
+                    />
+                    <button type="submit" class="btn-search">
+                      <i class="fa fa-search"></i>
+                    </button>
+                    <a
+                      href="#"
+                      class="close-search"
+                      onclick="toggleSearch(event)"
+                    >
+                      <i class="fa fa-times"></i>
+                    </a>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div class="col-6 text-center">
-              <a href="index.html" class="mobile-logo-link">
-                <img
-                  src="https://samakal.com/frontend/media/common/logo.png"
-                  alt="সমকাল"
-                  class="mobile-logo"
-                />
-              </a>
-            </div>
-            <div class="col-3 text-end">
-              <button class="mobile-search-btn" id="mobileSearchBtn">
-                <i class="fas fa-search"></i>
-              </button>
+
+            <!-- Menu list -->
+            <div class="menu-overflow">
+              <ul class="mobile-menu-list">
+                <!-- Date -->
+                <li class="menu-date-row">
+                  <p class="date mb-0">
+                    <i class="fa fa-calendar me-1" aria-hidden="true"></i>
+                    <span>শনিবার, ১১ জুলাই ২০২৬</span>
+                  </p>
+                </li>
+
+                <!-- Top buttons -->
+                <li class="menu-topbtn-row">
+                  <div class="MobileTopBtn d-flex gap-2">
+                  <a href="#" id="lang-toggle-btn" class="header-btn"
+                    >English</a>
+                    <div
+                      id="google_translate_element"
+                      style="display: none"
+                    ></div>
+                    <a href="#">লাইভ</a>
+                    <a href="#" target="_blank">ই-পেপার</a>
+                  </div>
+                </li>
+
+                <li><a href="#">সর্বশেষ</a></li>
+                <li><a href="bangladesh.html">বাংলাদেশ</a></li>
+                <li><a href="#">রাজনীতি</a></li>
+                <li><a href="#">অর্থনীতি</a></li>
+                <li><a href="#">বিশ্ব</a></li>
+                <li><a href="#">খেলা</a></li>
+                <li><a href="#">বিনোদন</a></li>
+
+                <!-- Dropdown: সারাদেশ -->
+                <li class="parent">
+                  <div
+                    class="menu-item-row d-flex align-items-center justify-content-between"
+                  >
+                    <a href="#">সারাদেশ</a>
+                    <span
+                      class="open-menu material-icons"
+                      onclick="toggleSub(this)"
+                      >+</span
+                    >
+                  </div>
+                  <ul class="SubMenuM" style="display: none">
+                    <li><a href="#">ঢাকা</a></li>
+                    <li>
+                      <a href="#">চট্টগ্রাম</a>
+                    </li>
+                    <li>
+                      <a href="#">রাজশাহী</a>
+                    </li>
+                    <li>
+                      <a href="#">খুলনা</a>
+                    </li>
+                    <li>
+                      <a href="#">বরিশাল</a>
+                    </li>
+                    <li>
+                      <a href="#">সিলেট</a>
+                    </li>
+                    <li>
+                      <a href="#">রংপুর</a>
+                    </li>
+                    <li>
+                      <a href="#">ময়মনসিংহ</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li><a href="#">অপরাধ</a></li>
+                <li><a href="#">টেকলাইফ</a></li>
+                <li><a href="#">রাজধানী</a></li>
+                <li><a href="/#">লাইফস্টাইল</a></li>
+                <li><a href="#">শৈলী</a></li>
+                <li><a href="#">কালের খেয়া</a></li>
+
+                <!-- Dropdown: অন্যান্য -->
+                <li class="parent">
+                  <div
+                    class="menu-item-row d-flex align-items-center justify-content-between"
+                  >
+                    <a href="#">অন্যান্য</a>
+                    <span
+                      class="open-menu material-icons"
+                      onclick="toggleSub(this)"
+                      >+</span
+                    >
+                  </div>
+                  <ul class="SubMenuM" style="display: none">
+                    <li><a href="#">চতুরঙ্গ</a></li>
+                    <li><a href="#">নারী দিবস</a></li>
+                    <li><a href="#">সাহিত্য ও সংস্কৃতি</a></li>
+                    <li><a href="#">জীবন সংগ্রাম</a></li>
+                    <li><a href="#">ভ্রমণ</a></li>
+                    <li><a href="#">ফিচার</a></li>
+                    <li><a href="#">প্রবাস</a></li>
+                    <li><a href="#">শিল্প-বাণিজ্য</a></li>
+                    <li><a href="#">সাক্ষাৎকার</a></li>
+                    <li><a href="#">প্রযুক্তি</a></li>
+                    <li><a href="#">শেয়ারবাজার</a></li>
+                    <li><a href="#">শিক্ষা</a></li>
+                    <li><a href="#">বইমেলা</a></li>
+                    <li><a href="#">মতামত</a></li>
+                    <li><a href="#">চাকরি</a></li>
+                    <li><a href="#">শিল্পমঞ্চ</a></li>
+                    <li><a href="#">বিশেষ আয়োজন</a></li>
+                    <li><a href="#">বিশেষ সমকাল</a></li>
+                  </ul>
+                </li>
+
+                <li><a href="#">ছবি</a></li>
+                <li><a href="#">ভিডিও</a></li>
+                <li><a href="#">আর্কাইভ</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-        <!-- Mobile Search Bar -->
-        <div class="mobile-search-bar d-none" id="mobileSearchBar">
-          <form>
-            <input type="text" placeholder="অনুসন্ধান করুন" />
-            <button type="submit"><i class="fas fa-search"></i></button>
-          </form>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-menu-header">
-            <div class="mobile-menu-top">
-              <button
-                class="mobile-menu-close"
-                id="mobileMenuClose"
-                aria-label="Close menu"
-              >
-                <i class="fas fa-times"></i>
-              </button>
+
+          <!-- Logo -->
+          <div class="topbar-logo flex-grow-1 text-center">
+            <a href="index.html">
               <img
                 src="https://samakal.com/frontend/media/common/logo.png"
-                alt="সমকাল"
+                title="SAMAKAL | GET THE LATEST ONLINE BANGLA NEWS"
+                alt="SAMAKAL | GET THE LATEST ONLINE BANGLA NEWS"
+                class="img-fluid logo-img"
               />
-            </div>
-            <span class="mobile-date">
-              <i class="fas fa-calendar"></i> বৃহস্পতিবার, ০৯ জুলাই ২০২৬
-            </span>
-
-            <div class="mobile-top-btns">
-              <a href="#">English</a>
-              <div id="google_translate_element" style="display: none"></div>
-              <a href="#">লাইভ</a>
-              <a href="#">ই-পেপার</a>
-            </div>
+            </a>
           </div>
 
-          <ul class="mobile-nav-list">
-            <li><a href="#">সর্বশেষ</a></li>
-            <li><a href="bangladesh.html">বাংলাদেশ</a></li>
-            <li><a href="#">রাজনীতি</a></li>
-            <li><a href="#">অর্থনীতি</a></li>
-            <li><a href="#">বিশ্ব</a></li>
-            <li><a href="#">খেলা</a></li>
-            <li><a href="#">বিনোদন</a></li>
-            <li class="has-submenu">
-              <a href="#">সারাদেশ <i class="fas fa-chevron-down"></i></a>
-              <ul class="mobile-submenu">
-                <li><a href="#">ঢাকা</a></li>
-                <li><a href="#">চট্টগ্রাম</a></li>
-                <li><a href="#">রাজশাহী</a></li>
-                <li><a href="#">খুলনা</a></li>
-                <li><a href="#">বরিশাল</a></li>
-                <li><a href="#">সিলেট</a></li>
-                <li><a href="#">রংপুর</a></li>
-                <li><a href="#">ময়মনসিংহ</a></li>
-              </ul>
-            </li>
-            <li><a href="#">অপরাধ</a></li>
-            <li><a href="#">টেকলাইফ</a></li>
-            <li><a href="#">রাজধানী</a></li>
-            <li><a href="#">লাইফস্টাইল</a></li>
-            <li><a href="#">শৈলী</a></li>
-            <li><a href="#">কালের খেয়া</a></li>
-            <li class="has-submenu">
-              <a href="#">অন্যান্য <i class="fas fa-chevron-down"></i></a>
-              <ul class="mobile-submenu">
-                <li><a href="#">চতুরঙ্গ</a></li>
-                <li><a href="#">নারী দিবস</a></li>
-                <li><a href="#">সাহিত্য ও সংস্কৃতি</a></li>
-                <li><a href="#">জীবন সংগ্রাম</a></li>
-                <li><a href="#">ভ্রমণ</a></li>
-                <li><a href="#">ফিচার</a></li>
-                <li><a href="#">প্রবাস</a></li>
-                <li><a href="#">শিল্প-বাণিজ্য</a></li>
-                <li><a href="#">সাক্ষাৎকার</a></li>
-                <li><a href="#">প্রযুক্তি</a></li>
-                <li><a href="#">শেয়ারবাজার</a></li>
-                <li><a href="#">শিক্ষা</a></li>
-                <li><a href="#">সমকাল অনুসন্ধান</a></li>
-                <li><a href="#">বইমেলা</a></li>
-                <li><a href="#">মতামত</a></li>
-                <li><a href="#">চাকরি</a></li>
-                <li><a href="#">শিল্পমঞ্চ</a></li>
-                <li><a href="#">বিশেষ আয়োজন</a></li>
-                <li><a href="#">বিশেষ সমকাল</a></li>
-              </ul>
-            </li>
-            <li><a href="#">ছবি</a></li>
-            <li><a href="#">ভিডিও</a></li>
-            <li><a href="#">আর্কাইভ</a></li>
-          </ul>
+          <!-- Search Trigger -->
+          <div class="topbar-search">
+            <a href="#" onclick="toggleSearch(event)">
+              <i class="fa fa-search"></i>
+            </a>
+          </div>
         </div>
       </div>
 
