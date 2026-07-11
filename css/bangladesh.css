@@ -1031,7 +1031,7 @@ body.menu-open {
   }
 
   .sub-list a {
-    font-size: 13px;
+    font-size: 20px;
   }
 }
 
@@ -1052,26 +1052,25 @@ body.menu-open {
 }
 
 .DCatLeadTitle h1 {
-  font-size: 20px;
   font-weight: 700;
-  color: var(--text);
+  color: #000;
   line-height: 1.4;
   margin-bottom: 10px;
 }
 
 .DCatLeadTitle h1:hover {
-  color: var(--red);
+  color: #f9c802;
 }
 
 .CatDesc {
-  font-size: 13px;
+  font-size: 16px;
   color: #555;
   line-height: 1.65;
   margin-bottom: 10px;
 }
 
 .publishTime {
-  font-size: 12px;
+  font-size: 14px;
   color: #888;
   display: block;
 }
@@ -1126,7 +1125,7 @@ body.menu-open {
 }
 
 .CatCardTitle h3 {
-  font-size: 15.5px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.45;
   color: #222222;
@@ -1139,7 +1138,7 @@ body.menu-open {
 }
 
 .Catcards .publishTime {
-  font-size: 11px;
+  font-size: 13px;
   color: #777777;
   display: block;
   margin-top: auto; /* Ensures it stays at the very bottom */
@@ -1196,8 +1195,11 @@ body.menu-open {
   display: block;
 }
 
+.CatListNews .CatListhead h3,
+.CatListhead h3 .subHeading {
+  font-size: 20px;
+}
 .CatListhead h3 {
-  font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.4;
   color: #1a1a1a;
@@ -1210,11 +1212,11 @@ body.menu-open {
 }
 
 .CatListNews a:hover .CatListhead h3 {
-  color: #cf1010;
+  color: #f9c802;
 }
 
 .ListDesc p {
-  font-size: 12.5px;
+  font-size: 16px;
   color: #666;
   line-height: 1.55;
   margin: 0 0 5px;
@@ -1241,11 +1243,11 @@ body.menu-open {
 }
 
 .load-more-data {
-  background-color: #cf1010;
-  color: #ffffff !important;
+  background-color: #f9c802;
+  color: #000 !important;
   padding: 8px 35px;
   border-radius: 4px;
-  font-size: 0.95rem;
+  font-size: 18px;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
@@ -1254,7 +1256,7 @@ body.menu-open {
 }
 
 .load-more-data:hover {
-  background-color: #a00d0d;
+  color: #fff !important;
 }
 
 /* Right side ads */
