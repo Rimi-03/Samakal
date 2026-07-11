@@ -472,6 +472,7 @@ if (typeof bootstrap !== "undefined") {
 // to desktop, or vice versa, never re-attached/removed the listeners).
 function initDropdownHover() {
   const dropdowns = document.querySelectorAll(".dropdown");
+  console.log("Found dropdowns:", dropdowns.length); // Does this print the correct number
 
   dropdowns.forEach(function (dropdown) {
     const dropdownMenu = dropdown.querySelector(".dropdown-menu");
@@ -493,8 +494,10 @@ function initDropdownHover() {
 
 // --- GOOGLE TRANSLATION ENGINE CONFIGURATION ---
 document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("lang-toggle-btn");
-  if (!btn) return;
+  const desktopBtn = document.getElementById("lang-toggle-btn");
+  const mobileBtn = document.getElementById("mobile-lang-btn");
+
+  if (!desktopBtn || !mobileBtn) return;
 
   function translate(lang) {
     const interval = setInterval(function () {
@@ -507,17 +510,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 300);
   }
 
-  btn.addEventListener("click", function (e) {
+  desktopBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    if (btn.dataset.lang === "en") {
+    if (desktopBtn.dataset.lang === "en") {
       translate("bn");
-      btn.dataset.lang = "bn";
+      desktopBtn.dataset.lang = "bn";
       btn.textContent = "English";
     } else {
       translate("en");
-      btn.dataset.lang = "en";
-      btn.textContent = "বাংলা";
+      desktopBtn.dataset.lang = "en";
+      desktopBtn.textContent = "বাংলা";
+    }
+  });
+
+  mobileBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    const currentLang = mobileBtn.dataset.lang || "bn";
+
+    if (currentLang === "bn") {
+      translate("en");
+      mobileBtn.dataset.lang = "en";
+      mobileBtn.textContent = "বাংলা";
+    } else {
+      translate("bn");
+      mobileBtn.dataset.lang = "bn";
+      mobileBtn.textContent = "English";
     }
   });
 });
@@ -536,7 +554,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Keep the spinner visible to signal loading
   if (autoLoadSpinner) autoLoadSpinner.style.display = "block";
   if (loadMoreBtn) loadMoreBtn.style.display = "inline-flex";
-  
+  // Manual Load More button
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      loadMoreNews();
+    });
+  }
+
   // Reveal first 4 items after 1 second
   setTimeout(function () {
     let initialCount = 0;
@@ -610,5 +635,80 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(autoLoadSpinner);
   }
 });
+
+//mobile menu
+// Universal Mobile Menu Toggle Function
+function myMenuBtnChng() {
+  // 1. Try to find either of your menu containers
+  const nav =
+    document.getElementById("mobile-nav") ||
+    document.getElementById("mobileMenu");
+  // 2. Try to find your hamburger button wrapper or icon
+  const icon =
+    document.querySelector("#menu-button i") ||
+    document.querySelector("#mobileMenuBtn i");
+
+  if (!nav) {
+    console.error("Mobile Menu Element not found on this page.");
+    return;
+  }
+
+  // Toggle BOTH potential CSS visibility classes so your CSS always matches
+  nav.classList.toggle("show");
+  nav.classList.toggle("active");
+
+  const isOpen =
+    nav.classList.contains("show") || nav.classList.contains("active");
+
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+    // Safely change icon to cross if icon element exists
+    if (icon) {
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-times");
+    }
+  } else {
+    document.body.style.overflow = "";
+    // Safely change icon to hamburger if icon element exists
+    if (icon) {
+      icon.classList.remove("fa-times");
+      icon.classList.add("fa-bars");
+    }
+  }
+}
+
+function toggleSearch(e) {
+  e.preventDefault();
+  const block = document.getElementById("searchBlock");
+  const isHidden = block.style.display === "none" || block.style.display === "";
+  block.style.display = isHidden ? "block" : "none";
+  if (isHidden) {
+    setTimeout(() => document.getElementById("search").focus(), 50);
+  }
+}
+
+function toggleSub(icon) {
+  const parentLi = icon.closest(".parent");
+  const subMenu = parentLi.querySelector(".SubMenuM");
+  const isOpen = subMenu.style.display === "block";
+
+  // Close every submenu
+  document.querySelectorAll(".SubMenuM").forEach((menu) => {
+    menu.style.display = "none";
+  });
+
+  document.querySelectorAll(".open-menu").forEach((btn) => {
+    btn.innerHTML = "+";
+    btn.classList.remove("active");
+  });
+
+  if (!isOpen) {
+    subMenu.style.display = "block";
+
+    icon.innerHTML = "−"; // minus
+
+    icon.classList.add("active");
+  }
+}
 
 console.log("Samakal Clone - Responsive Bootstrap Design Loaded Successfully");

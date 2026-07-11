@@ -236,119 +236,192 @@
 
       <!-- Mobile Header -->
       <div class="mobile-header d-lg-none">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-3">
-              <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-              </button>
+        <div class="mobile-topbar d-flex align-items-center">
+          <!-- Hamburger/Menu Button -->
+          <div class="topbar-close">
+            <span
+              id="menu-button"
+              class="menu-button"
+              onclick="myMenuBtnChng()"
+            >
+              <i class="fas fa-bars"></i>
+            </span>
+          </div>
+
+          <div id="mobile-nav" class="MobileMenu">
+            <!-- Search bar (hidden by default) -->
+            <div class="search_block" id="searchBlock" style="display: none">
+              <div class="container">
+                <form
+                  name="frmSearch"
+                  action="https://www.google.com"
+                  target="_blank"
+                  method="get"
+                >
+                  <div class="search_logo d-flex align-items-center gap-2">
+                    <input type="hidden" name="cx" value="d540ac00b35dc4da6" />
+                    <input type="hidden" name="gsc.sort" value="date" />
+                    <input type="hidden" name="ie" value="utf-8" />
+                    <input
+                      type="text"
+                      name="q"
+                      id="search"
+                      class="form-control"
+                      placeholder="অনুসন্ধান করুন"
+                    />
+                    <button type="submit" class="btn-search">
+                      <i class="fa fa-search"></i>
+                    </button>
+                    <a
+                      href="#"
+                      class="close-search"
+                      onclick="toggleSearch(event)"
+                    >
+                      <i class="fa fa-times"></i>
+                    </a>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div class="col-6 text-center">
-              <a href="index.html" class="mobile-logo-link">
-                <img
-                  src="https://samakal.com/frontend/media/common/logo.png"
-                  alt="সমকাল"
-                  class="mobile-logo"
-                />
-              </a>
-            </div>
-            <div class="col-3 text-end">
-              <button class="mobile-search-btn" id="mobileSearchBtn">
-                <i class="fas fa-search"></i>
-              </button>
+
+            <!-- Menu list -->
+            <div class="menu-overflow">
+              <ul class="mobile-menu-list">
+                <!-- Date -->
+                <li class="menu-date-row">
+                  <p class="date mb-0">
+                    <i class="fa fa-calendar me-1" aria-hidden="true"></i>
+                    <span>শনিবার, ১১ জুলাই ২০২৬</span>
+                  </p>
+                </li>
+
+                <!-- Top buttons -->
+                <li class="menu-topbtn-row">
+                  <div class="MobileTopBtn d-flex gap-2">
+                    <a href="#" id="mobile-lang-btn" class="header-btn"
+                      >English</a
+                    >
+                    <div
+                      id="google_translate_element"
+                      style="display: none"
+                    ></div>
+                    <a href="#">লাইভ</a>
+                    <a href="#" target="_blank">ই-পেপার</a>
+                  </div>
+                </li>
+
+                <li><a href="#">সর্বশেষ</a></li>
+                <li><a href="bangladesh.html">বাংলাদেশ</a></li>
+                <li><a href="#">রাজনীতি</a></li>
+                <li><a href="#">অর্থনীতি</a></li>
+                <li><a href="#">বিশ্ব</a></li>
+                <li><a href="#">খেলা</a></li>
+                <li><a href="#">বিনোদন</a></li>
+
+                <!-- Dropdown: সারাদেশ -->
+                <li class="parent">
+                  <div
+                    class="menu-item-row d-flex align-items-center justify-content-between"
+                  >
+                    <a href="#">সারাদেশ</a>
+                    <span
+                      class="open-menu material-icons"
+                      onclick="toggleSub(this)"
+                      >+</span
+                    >
+                  </div>
+                  <ul class="SubMenuM" style="display: none">
+                    <li><a href="#">ঢাকা</a></li>
+                    <li>
+                      <a href="#">চট্টগ্রাম</a>
+                    </li>
+                    <li>
+                      <a href="#">রাজশাহী</a>
+                    </li>
+                    <li>
+                      <a href="#">খুলনা</a>
+                    </li>
+                    <li>
+                      <a href="#">বরিশাল</a>
+                    </li>
+                    <li>
+                      <a href="#">সিলেট</a>
+                    </li>
+                    <li>
+                      <a href="#">রংপুর</a>
+                    </li>
+                    <li>
+                      <a href="#">ময়মনসিংহ</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li><a href="#">অপরাধ</a></li>
+                <li><a href="#">টেকলাইফ</a></li>
+                <li><a href="#">রাজধানী</a></li>
+                <li><a href="/#">লাইফস্টাইল</a></li>
+                <li><a href="#">শৈলী</a></li>
+                <li><a href="#">কালের খেয়া</a></li>
+
+                <!-- Dropdown: অন্যান্য -->
+                <li class="parent">
+                  <div
+                    class="menu-item-row d-flex align-items-center justify-content-between"
+                  >
+                    <a href="#">অন্যান্য</a>
+                    <span
+                      class="open-menu material-icons"
+                      onclick="toggleSub(this)"
+                      >+</span
+                    >
+                  </div>
+                  <ul class="SubMenuM" style="display: none">
+                    <li><a href="#">চতুরঙ্গ</a></li>
+                    <li><a href="#">নারী দিবস</a></li>
+                    <li><a href="#">সাহিত্য ও সংস্কৃতি</a></li>
+                    <li><a href="#">জীবন সংগ্রাম</a></li>
+                    <li><a href="#">ভ্রমণ</a></li>
+                    <li><a href="#">ফিচার</a></li>
+                    <li><a href="#">প্রবাস</a></li>
+                    <li><a href="#">শিল্প-বাণিজ্য</a></li>
+                    <li><a href="#">সাক্ষাৎকার</a></li>
+                    <li><a href="#">প্রযুক্তি</a></li>
+                    <li><a href="#">শেয়ারবাজার</a></li>
+                    <li><a href="#">শিক্ষা</a></li>
+                    <li><a href="#">বইমেলা</a></li>
+                    <li><a href="#">মতামত</a></li>
+                    <li><a href="#">চাকরি</a></li>
+                    <li><a href="#">শিল্পমঞ্চ</a></li>
+                    <li><a href="#">বিশেষ আয়োজন</a></li>
+                    <li><a href="#">বিশেষ সমকাল</a></li>
+                  </ul>
+                </li>
+
+                <li><a href="#">ছবি</a></li>
+                <li><a href="#">ভিডিও</a></li>
+                <li><a href="#">আর্কাইভ</a></li>
+              </ul>
             </div>
           </div>
-        </div>
-        <!-- Mobile Search Bar -->
-        <div class="mobile-search-bar d-none" id="mobileSearchBar">
-          <form>
-            <input type="text" placeholder="অনুসন্ধান করুন" />
-            <button type="submit"><i class="fas fa-search"></i></button>
-          </form>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-menu-header">
-            <div class="mobile-menu-top">
-              <button
-                class="mobile-menu-close"
-                id="mobileMenuClose"
-                aria-label="Close menu"
-              >
-                <i class="fas fa-times"></i>
-              </button>
+
+          <!-- Logo -->
+          <div class="topbar-logo flex-grow-1 text-center">
+            <a href="index.html">
               <img
                 src="https://samakal.com/frontend/media/common/logo.png"
-                alt="সমকাল"
+                title="SAMAKAL | GET THE LATEST ONLINE BANGLA NEWS"
+                alt="SAMAKAL | GET THE LATEST ONLINE BANGLA NEWS"
+                class="img-fluid logo-img"
               />
-            </div>
-            <span class="mobile-date">
-              <i class="fas fa-calendar"></i> বৃহস্পতিবার, ০৯ জুলাই ২০২৬
-            </span>
-
-            <div class="mobile-top-btns">
-              <a href="#">English</a>
-              <div id="google_translate_element" style="display: none"></div>
-              <a href="#">লাইভ</a>
-              <a href="#">ই-পেপার</a>
-            </div>
+            </a>
           </div>
 
-          <ul class="mobile-nav-list">
-            <li><a href="#">সর্বশেষ</a></li>
-            <li><a href="bangladesh.html">বাংলাদেশ</a></li>
-            <li><a href="#">রাজনীতি</a></li>
-            <li><a href="#">অর্থনীতি</a></li>
-            <li><a href="#">বিশ্ব</a></li>
-            <li><a href="#">খেলা</a></li>
-            <li><a href="#">বিনোদন</a></li>
-            <li class="has-submenu">
-              <a href="#">সারাদেশ <i class="fas fa-chevron-down"></i></a>
-              <ul class="mobile-submenu">
-                <li><a href="#">ঢাকা</a></li>
-                <li><a href="#">চট্টগ্রাম</a></li>
-                <li><a href="#">রাজশাহী</a></li>
-                <li><a href="#">খুলনা</a></li>
-                <li><a href="#">বরিশাল</a></li>
-                <li><a href="#">সিলেট</a></li>
-                <li><a href="#">রংপুর</a></li>
-                <li><a href="#">ময়মনসিংহ</a></li>
-              </ul>
-            </li>
-            <li><a href="#">অপরাধ</a></li>
-            <li><a href="#">টেকলাইফ</a></li>
-            <li><a href="#">রাজধানী</a></li>
-            <li><a href="#">লাইফস্টাইল</a></li>
-            <li><a href="#">শৈলী</a></li>
-            <li><a href="#">কালের খেয়া</a></li>
-            <li class="has-submenu">
-              <a href="#">অন্যান্য <i class="fas fa-chevron-down"></i></a>
-              <ul class="mobile-submenu">
-                <li><a href="#">চতুরঙ্গ</a></li>
-                <li><a href="#">নারী দিবস</a></li>
-                <li><a href="#">সাহিত্য ও সংস্কৃতি</a></li>
-                <li><a href="#">জীবন সংগ্রাম</a></li>
-                <li><a href="#">ভ্রমণ</a></li>
-                <li><a href="#">ফিচার</a></li>
-                <li><a href="#">প্রবাস</a></li>
-                <li><a href="#">শিল্প-বাণিজ্য</a></li>
-                <li><a href="#">সাক্ষাৎকার</a></li>
-                <li><a href="#">প্রযুক্তি</a></li>
-                <li><a href="#">শেয়ারবাজার</a></li>
-                <li><a href="#">শিক্ষা</a></li>
-                <li><a href="#">সমকাল অনুসন্ধান</a></li>
-                <li><a href="#">বইমেলা</a></li>
-                <li><a href="#">মতামত</a></li>
-                <li><a href="#">চাকরি</a></li>
-                <li><a href="#">শিল্পমঞ্চ</a></li>
-                <li><a href="#">বিশেষ আয়োজন</a></li>
-                <li><a href="#">বিশেষ সমকাল</a></li>
-              </ul>
-            </li>
-            <li><a href="#">ছবি</a></li>
-            <li><a href="#">ভিডিও</a></li>
-            <li><a href="#">আর্কাইভ</a></li>
-          </ul>
+          <!-- Search Trigger -->
+          <div class="topbar-search">
+            <a href="#" onclick="toggleSearch(event)">
+              <i class="fa fa-search"></i>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -356,18 +429,19 @@
     </header>
 
     <div class="ad-section">
-      <div class="container">
-        <div class="ad-wrapper">
+      <div class="container text-center">
+        <div class="ad-wrapper mx-auto">
           <a href="#" target="_blank" rel="noopener noreferrer" id="ad-link">
             <img
-              src="https://tpc.googlesyndication.com/simgad/14506679040606506255
-"
+              src=""
               alt="Advertisement"
-              class="ad-image"
+              class="img-fluid rounded shadow-sm"
               id="ad-image"
             />
           </a>
-          <small class="ad-label">ADVERTISEMENT</small>
+          <small class="ad-label" style="font-size: 10px; letter-spacing: 1px"
+            >ADVERTISEMENT</small
+          >
         </div>
       </div>
     </div>
@@ -469,12 +543,12 @@
                 <div
                   class="article-share-btns d-flex flex-wrap gap-1 align-items-center"
                 >
-                  <a href="#" class="share-btn share-fb" title="Facebook"
-                    ><i class="fa-brands fa-facebook-f"></i>
-                    <span>Facebook</span></a
-                  >
-                  <a href="#" class="share-btn share-x" title="X"
-                    ><svg
+                  <a href="#" class="share-btn share-fb" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>Facebook</span>
+                  </a>
+                  <a href="#" class="share-btn share-x" title="X">
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="13"
                       height="13"
@@ -483,27 +557,28 @@
                     >
                       <path
                         d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
-                      /></svg
-                  ></a>
-                  <a href="#" class="share-btn share-wa" title="WhatsApp"
-                    ><i class="fa-brands fa-whatsapp"></i>
-                    <span>WhatsApp</span></a
-                  >
-                  <a href="#" class="share-btn share-li" title="LinkedIn"
-                    ><i class="fa-brands fa-linkedin-in"></i
-                  ></a>
-                  <a href="#" class="share-btn share-tg" title="Telegram"
-                    ><i class="fa-brands fa-telegram"></i
-                  ></a>
-                  <a href="#" class="share-btn share-ms" title="Messenger"
-                    ><i class="fa-brands fa-facebook-messenger"></i
-                  ></a>
-                  <a href="#" class="share-btn share-em" title="Email"
-                    ><i class="fa-solid fa-envelope"></i
-                  ></a>
-                  <a href="#" class="share-btn share-more" title="More"
-                    ><i class="fa-solid fa-plus"></i
-                  ></a>
+                      />
+                    </svg>
+                  </a>
+                  <a href="#" class="share-btn share-wa" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                  </a>
+                  <a href="#" class="share-btn share-li" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
+                  <a href="#" class="share-btn share-tg" title="Telegram">
+                    <i class="fa-brands fa-telegram"></i>
+                  </a>
+                  <a href="#" class="share-btn share-ms" title="Messenger">
+                    <i class="fa-brands fa-facebook-messenger"></i>
+                  </a>
+                  <a href="#" class="share-btn share-em" title="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                  </a>
+                  <a href="#" class="share-btn share-more" title="More">
+                    <i class="fa-solid fa-plus"></i>
+                  </a>
                 </div>
               </div>
               <div class="col-lg-2">
@@ -539,9 +614,8 @@
               <p>
                 বিশ্বকাপের শেষ ষোলোর লড়াই শেষ হয়েছে। বৃহস্পতিবার বাংলাদেশ সময়
                 রাত ২টায় প্রথম কোয়ার্টার ফাইনালে মরক্কোর মুখোমুখি হবে ফ্রান্স।
-                ওই ম্যাচের রেফারি প্যানেলের পাঁচজনই আর্জেন্টিনার।
+                ওই ম্যাচের রেফারি প্যানেলের পাঁচজনই আর্জেন্টিনার concert।
               </p>
-
               <p>
                 ফিফা জানিয়েছে, বোস্টনের ম্যাচটি পরিচালনা করবেন আর্জেন্টিনার
                 অভিজ্ঞ রেফারি ফাকুন্দো তেলো। তার সহকারী থাকবেন হুয়ান পাবলো
@@ -574,7 +648,6 @@
                 ওদিকে মনোযোগ দেইনি। আমাদের মনোযোগ মরক্কোর দিকে। আমরা ম্যাচটা
                 জিততে চাই। এটাই আমাদের কাছে গুরুত্বপূর্ণ।'
               </p>
-
               <p>
                 লেন্সে খেলা ফ্রান্সের ২১ বছর বয়সী গোলরক্ষক রবিন রিজার বলেন,
                 'আমাদের সন্দেহ নিয়ে মাঠে নামলে চলবে না। বিতর্ক তৈরি করা তাদের
@@ -604,7 +677,7 @@
 
               <p>
                 মিসরের বিপক্ষে আর্জেন্টিনার শেষ ষোলোর ম্যাচেও দেখা গেছে একই রকম
-                ঘটনা। ম্যাচের তিন রেফারিই ছিলেন ফ্রান্সের। ম্যাচের আগে এটা নিয়ে
+                घटना। ম্যাচের তিন রেফারিই ছিলেন ফ্রান্সের। ম্যাচের আগে এটা নিয়ে
                 সমালোচনা হলেও ম্যাচে রেফারির বিতর্কিত সব সিদ্ধান্ত মেসিদের পক্ষে
                 গেছে। বিষয়টি নিয়ে মিসরের ফেডারেশন ফিফার কাছে নালিশ করার
                 সিদ্ধান্ত নিয়েছে।
@@ -644,10 +717,10 @@
                               <h3 class="related-title">
                                 নতুন কুঁড়ি স্পোর্টস শুরু ১৮ জুলাই
                               </h3>
-                              <span class="related-time"
-                                ><i class="fa-regular fa-clock"></i> আপডেট ০৯
-                                জুলাই ২০২৬ | ০০:৩৯</span
-                              >
+                              <span class="related-time">
+                                <i class="fa-regular fa-clock"></i> আপডেট ০৯
+                                জুলাই ২০২৬ | ০০:৩৯
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -672,10 +745,10 @@
                               <h3 class="related-title">
                                 বিশ্বকাপে এবার ইউরোপের আধিপত্য
                               </h3>
-                              <span class="related-time"
-                                ><i class="fa-regular fa-clock"></i> আপডেট ০৮
-                                জুলাই ২০২৬ | ২৩:৫০</span
-                              >
+                              <span class="related-time">
+                                <i class="fa-regular fa-clock"></i> আপডেট ০৮
+                                জুলাই ২০২৬ | ২৩:৫০
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -701,10 +774,10 @@
                                 দুই বিশ্বকাপে পেনাল্টিতে শীর্ষে মেসিরা, দুইয়ে
                                 কারা
                               </h3>
-                              <span class="related-time"
-                                ><i class="fa-regular fa-clock"></i> আপডেট ০৮
-                                জুলাই ২০২৬ | ২২:১০</span
-                              >
+                              <span class="related-time">
+                                <i class="fa-regular fa-clock"></i> আপডেট ০৮
+                                জুলাই ২০২৬ | ২২:১০
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -730,10 +803,10 @@
                                 এফবিআইয়ের তদন্তের মুখে আর্জেন্টিনা ফুটবল
                                 অ্যাসোসিয়েশন
                               </h3>
-                              <span class="related-time"
-                                ><i class="fa-regular fa-clock"></i> আপডেট ০৮
-                                জুলাই ২০২৬ | ২১:৩১</span
-                              >
+                              <span class="related-time">
+                                <i class="fa-regular fa-clock"></i> আপডেট ০৮
+                                জুলাই ২০২৬ | ২১:৩১
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -744,6 +817,7 @@
               </div>
             </section>
           </div>
+          <!-- Close col-lg-9 (Main Content) -->
 
           <!-- Right Sidebar -->
           <div class="col-lg-3">
@@ -954,10 +1028,15 @@
                 ></a>
               </div>
             </div>
+            <!-- Close DlastNews -->
           </div>
+          <!-- Close col-lg-3 (Right Sidebar) -->
         </div>
+        <!-- Close row detailsBodyRow -->
       </div>
+      <!-- Close container -->
     </section>
+    <!-- Close section details-page -->
 
     <!-- Footer -->
     <footer class="footer-section">

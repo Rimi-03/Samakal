@@ -95,7 +95,8 @@ img {
 /* Header Top */
 .header-top {
   background: #fff;
-  padding: 10px 0;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -114,18 +115,22 @@ img {
 }
 
 .header-actions {
-  gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px !important;
 }
 
 /* --- Social Media Outlined Circles --- */
 .social-links {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 6px;
 }
 
 .social-links a {
   width: 34px;
-  height: 34px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,7 +152,7 @@ img {
 /* --- Gray Text Action Buttons --- */
 .header-btns {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .header-btn {
@@ -213,8 +218,14 @@ img {
   position: relative;
   z-index: 1000;
   background: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 5px 0;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  box-shadow: none;
+  padding: 0;
+}
+.main-nav .container {
+  display: flex;
+  align-items: center;
 }
 
 .main-nav.is-fixed {
@@ -222,7 +233,9 @@ img {
   top: 0;
   left: 0;
   width: 100%;
+  background: #fff;
   animation: navSlideDown 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
 @keyframes navSlideDown {
@@ -237,6 +250,9 @@ img {
 .main-nav.scrolled {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
+.main-nav.scrolled .nav-link {
+  font-size: 16px;
+}
 
 /* Spacer that takes over the nav's height once it goes fixed,
    so page content underneath doesn't jump. Height is set by JS. */
@@ -247,26 +263,38 @@ img {
 
 .sticky-logo {
   display: none;
+  margin-right: 15px;
 }
 
 .sticky-logo img {
-  max-height: 40px;
+  max-height: 30px;
 }
 
 .main-nav.scrolled .sticky-logo {
   display: block;
+  padding: 15px;
+}
+
+#mainNav {
+  justify-content: center;
 }
 
 .navbar-nav {
-  gap: 5px;
+  margin: auto;
+  gap: 0;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 0;
 }
 
 .nav-link {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   padding: 8px 12px !important;
   color: var(--text-dark) !important;
-  border-radius: 4px;
+  border-radius: 0;
   transition: all 0.3s;
 }
 
@@ -297,7 +325,8 @@ img {
   position: absolute;
   top: 100%;
   right: 0;
-  left: 50% !important;
+  left: 0 !important;
+  transform: none !important;
   width: 85vw !important;
   max-width: 800px !important;
   background: #ffffff !important;
@@ -331,372 +360,320 @@ img {
    MOBILE HEADER
    ============================================================ */
 .mobile-header {
-  background: #fff;
-  padding: 10px 0;
-  position: relative; /* was `sticky` — same ancestor-fragility issue as
-                          desktop nav; now driven by JS `.is-fixed` below */
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: none;
 }
-
-.mobile-header.is-fixed {
-  position: fixed;
+/* ── Mobile Menu Container ── */
+.MobileMenu {
+  display: none;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-}
-
-.mobile-menu-btn,
-.mobile-search-btn {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 5px 10px;
-  color: #333;
-}
-
-.mobile-menu-btn:hover,
-.mobile-search-btn:hover {
-  color: var(--primary-color);
-}
-
-.mobile-logo {
-  max-height: 40px;
-}
-
-.mobile-search-bar {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: var(--secondary-color);
-  padding: 15px;
-}
-
-.mobile-search-bar form {
-  display: flex;
-  gap: 10px;
-}
-
-.mobile-search-bar input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-}
-
-.mobile-search-bar button {
-  padding: 10px 20px;
-  background: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-}
-
-/* ============================================================
-   MOBILE MENU DRAWER
-   ============================================================ */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 320px;
-  max-width: 100%;
   height: 100vh;
-  background: #ffffff;
+  background: #fff;
   z-index: 9999;
+}
+
+.MobileMenu.show {
+  display: flex;
+}
+
+@media (max-width: 991.98px) {
+  .mobile-header {
+    display: block;
+  }
+
+  .MobileMenu {
+    display: none;
+    position: fixed;
+    top: 54px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 54px);
+    background: #fff;
+    z-index: 9999;
+  }
+
+  .MobileMenu.show {
+    display: block;
+  }
+}
+/* ── Top Bar ── */
+.mobile-topbar {
+  width: 100%;
+  height: 60px; /* Increased height slightly for better padding */
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+  background: #fff;
+  display: flex;
+  align-items: center; /* Ensures content stays centered vertically */
+}
+
+.topbar-close {
+  width: 44px;
+}
+
+.menu-button {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+.menu-button i {
+  font-size: 28px; /* Adjust this value */
+  color: #000;
+}
+.close-search i,
+.topbar-close i {
+  font-size: 24px; /* Adjust this value */
+  color: #000;
+}
+.menu-button i {
+  font-size: 28px;
+}
+.topbar-search i{
+font-size: 22px;
+color: #e67e22;
+}
+
+/* .menu-button:hover {
+  color: #c0392b;
+} */
+
+.logo-img {
+  height: 36px;
+  width: auto;
+}
+
+.topbar-search {
+  width: 44px;
+}
+
+.nav-link-search {
+  font-size: 18px;
+  color: #e67e22;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  transition: color 0.2s;
+}
+.nav-link-search:hover {
+  color: #e67e22;
+}
+
+/* ── Search Block ── */
+.search_block {
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.search_logo {
+  padding: 0 4px;
+}
+
+.search_logo .form-control {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding: 6px 10px;
+  flex: 1;
+}
+
+.search_logo .form-control:focus {
+  border-color: #e67e22;
+  box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.15);
+  outline: none;
+}
+
+.btn-search {
+  background: #e67e22;
+  color: #ffffff;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.btn-search:hover {
+  background: #d35400;
+}
+
+.close-search {
+  color: #555;
+  text-decoration: none;
+  flex-shrink: 0;
+  padding: 4px 6px;
+  transition: color 0.2s;
+}
+/* .close-search:hover {
+  color: #c0392b;
+} */
+
+/* ── Scrollable Menu List ── */
+.menu-overflow {
+  height: calc(100vh - 54px);
   overflow-y: auto;
-  transform: translateX(-100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 20px 0;
-  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
-  display: block !important;
 }
 
-.mobile-menu.active {
-  /* transform: translateX(0); */
-  transform: translateX(0) !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* Scrollbar polish inside the drawer (webkit browsers) */
-.mobile-menu::-webkit-scrollbar {
+.menu-overflow::-webkit-scrollbar {
   width: 4px;
 }
-
-.mobile-menu::-webkit-scrollbar-thumb {
-  background: #ddd;
-  border-radius: 4px;
+.menu-overflow::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+.menu-overflow::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
 }
 
-/* --- Header block inside the drawer: logo row + date + pill buttons --- */
-.mobile-menu-header {
-  position: relative;
-  padding: 0 0 15px 0;
-  border-bottom: none;
-  margin-bottom: 0;
+.mobile-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.mobile-menu-top {
+.mobile-menu-list > li {
+  border-bottom: 1px solid #efefef;
+}
+
+.mobile-menu-list > li > a,
+.mobile-menu-list > li .menu-item-row > a {
+  display: block;
+  padding: 12px 16px;
+  color: #222;
+  text-decoration: none;
+  font-size: 15px;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.mobile-menu-list > li > a:hover,
+.mobile-menu-list > li .menu-item-row > a:hover {
+  background: #fdf3ea;
+  color: #e67e22;
+}
+
+/* ── Date Row ── */
+.menu-date-row {
+  text-align: center;
+  font-size: 15px;
+  background: #e5e5e5;
+  padding: 10px 16px;
+  border-bottom: 1px solid #efefef;
+}
+
+.menu-date-row .date {
+  font-size: 15px;
+  color: #000000;
+}
+
+.menu-date-row .date i {
+  color: #000000;
+}
+
+/* ── Top Buttons Row ── */
+.menu-topbtn-row {
+  background: #e5e5e5;
+  padding: 8px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.MobileTopBtn {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.MobileTopBtn a {
+  display: inline-block;
+  padding: 5px 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 17px;
+  color: #000000;
+  text-decoration: none;
+  background: #e5e5e5;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+
+/* .MobileTopBtn a:hover {
+  background: #e67e22;
+  color: #fff;
+  border-color: #e67e22;
+} */
+
+/* ── Parent / Dropdown items ── */
+.parent .menu-item-row {
+  padding-right: 12px;
+}
+
+.parent .menu-item-row > a {
+  flex: 1;
+}
+
+.open-menu {
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  padding: 14px 45px; /* side padding keeps the × button clear of the logo */
-  border-bottom: 3px solid var(--primary-color);
-}
-
-.mobile-menu-top img {
-  max-height: 34px;
-}
-
-.mobile-menu-close {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  color: var(--text-dark);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
   cursor: pointer;
+  font-size: 22px;
+  color: #000000;
+  transition: color 0.2s;
+  user-select: none;
 }
 
-.mobile-menu-close:hover {
-  background: rgba(181, 18, 27, 0.08);
-  color: var(--primary-color);
+.open-menu.active {
+  color: #000000;
 }
 
-.mobile-date {
-  display: block;
-  text-align: center;
-  font-size: 13px;
-  color: #fff;
-  background: var(--secondary-color);
-  padding: 8px 10px;
-  margin: 0;
-}
-
-.mobile-date i {
-  color: var(--primary-color);
-  margin-right: 6px;
-}
-
-.mobile-top-btns {
-  display: flex;
-  gap: 8px;
-  padding: 10px 15px;
-  background: #f7f7f7;
-  border-bottom: 1px solid #eee;
-}
-
-.mobile-top-btns a {
-  flex: 1;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 7px 8px;
-  border-radius: 20px;
-  background: #fff;
-  color: var(--secondary-color);
-  border: 1px solid #ddd;
-}
-
-/* "লাইভ" gets the brand-red treatment, matching how the real
-   site draws attention to live coverage */
-.mobile-top-btns a:nth-child(2) {
-  background: var(--primary-color);
-  color: #fff;
-  border-color: var(--primary-color);
-}
-
-.mobile-top-btns a:hover {
-  opacity: 0.85;
-}
-
-/* --- Nav list --- */
-.mobile-nav-list {
-  padding: 4px 0;
-}
-
-.mobile-nav-list li {
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.mobile-nav-list a,
-.mobile-nav-list a:link,
-.mobile-nav-list a:visited {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 13px 16px;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text-dark) !important;
-  border-left: 3px solid transparent;
-  text-decoration: none !important;
-}
-
-.mobile-nav-list li a:hover,
-.mobile-nav-list li a:active,
-.mobile-nav-list li a:focus {
-  color: var(--primary-color) !important;
-  background: #fdf2f2;
-  border-left-color: var(--primary-color);
-}
-
-.has-submenu > a,
-.has-submenu > a:link,
-.has-submenu > a:visited {
-  color: var(--text-dark) !important;
-}
-
-.has-submenu > a i {
-  color: var(--primary-color) !important;
-  font-size: 12px;
-  transition: transform 0.3s ease;
-}
-
-/* --- Submenus --- */
-.mobile-submenu,
-.mobile-submenu li {
-  list-style: none !important;
-}
-
-.mobile-submenu {
+/* ── Sub Menu ── */
+.SubMenuM {
+  list-style: none;
   padding: 0;
   margin: 0;
-  background: #faf9f9;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+  background: #f5f5f5;
 }
 
-.mobile-submenu.active {
-  max-height: 500px;
+.SubMenuM li {
+  border-top: 1px solid #e8e8e8;
 }
 
-.mobile-submenu li a,
-.mobile-submenu li a:link,
-.mobile-submenu li a:visited {
-  padding: 10px 15px 10px 30px !important;
-  font-size: 13px;
-  color: #555 !important;
-  border-left: 3px solid transparent;
-  border-bottom: 1px solid #eee;
-  text-decoration: none !important;
+.SubMenuM li a {
+  display: block;
+  padding: 10px 28px;
+  font-size: 14px;
+  color: #444;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
-.mobile-submenu li a:hover,
-.mobile-submenu li a:focus {
-  color: var(--primary-color) !important;
-  background: #fdf2f2;
-  border-left-color: var(--primary-color);
+.SubMenuM li a:hover {
+  background: #fdf3ea;
+  color: #e67e22;
 }
 
-/* Ensure body doesn't scroll when menu is open */
-body.menu-open {
-  overflow: hidden;
-}
-
-/* Overlay behind the drawer (click-outside-to-close) */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 9998;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.mobile-menu.active ~ .menu-overlay,
-.mobile-menu.active + .menu-overlay {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto; /* Block clicks when visible */
-}
-
-/* Alternative: If overlay is inside the menu container */
-.mobile-menu.active .menu-overlay {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
 
 /* ============================================================
    ≤365px responsiveness (small phones / folded outer screens)
    ============================================================ */
 @media (max-width: 365px) {
-  .mobile-header .container {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .mobile-menu-btn,
-  .mobile-search-btn {
-    font-size: 18px;
-    padding: 5px 6px;
-  }
-
-  .mobile-logo {
-    max-height: 32px;
-  }
-
-  .mobile-menu {
-    width: 100%;
-  }
-
-  .mobile-menu-top {
-    padding: 14px 40px 14px 40px;
-  }
-
-  .mobile-date {
-    font-size: 11px;
-  }
-
-  .mobile-top-btns {
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .mobile-top-btns a {
-    font-size: 11px;
-    padding: 4px 8px;
-  }
-
-  .mobile-nav-list a {
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-
-  .mobile-submenu li a {
-    padding: 8px 12px 8px 24px !important;
-    font-size: 13px;
-  }
-
-  .mobile-search-bar {
-    padding: 10px;
-  }
-
-  .mobile-search-bar input {
-    padding: 8px;
-    font-size: 13px;
-  }
-
-  .mobile-search-bar button {
-    padding: 8px 12px;
-  }
 
   .ad-image {
     max-width: 100%;
@@ -794,29 +771,25 @@ body.menu-open {
    AD SECTION
    ============================================================ */
 .ad-section {
-  background: #ffffff;
-  padding: 0;
+  padding: 15px 0;
+  background: #f8f9fa;
 }
 
 .ad-wrapper {
-  background: #ffffff;
-  min-height: 0;
-  padding: 0;
-  margin: 0;
-}
-
-.ad-wrapper a,
-.ad-label {
-  display: none;
-}
-
-.ad-wrapper.mb-5px {
-  margin-bottom: 0;
+  max-width: 970px; /* Maximum size matching Kalbela's desktop ad */
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .ad-image {
   max-width: 100%;
   height: auto;
+  object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   transition:
@@ -831,10 +804,10 @@ body.menu-open {
 
 .ad-label {
   display: block;
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 10px;
   letter-spacing: 1.5px;
-  color: #ffffff;
+  color: #999;
   text-transform: uppercase;
   font-weight: 500;
 }
