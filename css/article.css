@@ -897,7 +897,7 @@ body.menu-open {
   background: transparent;
   padding: 0;
   margin: 0;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .article-breadcrumb .breadcrumb-item a {
@@ -920,14 +920,14 @@ body.menu-open {
 }
 
 .dheading .DShoulder {
-  font-size: 13px;
+  font-size: 16px;
   color: #b5121b;
   font-weight: 600;
   margin: 0 0 6px;
 }
 
 .article-title {
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 700;
   line-height: 1.4;
   color: #111;
@@ -979,7 +979,7 @@ body.menu-open {
 }
 
 .img-caption-text {
-  font-size: 12px;
+  font-size: 14px;
   color: #777;
   margin: 6px 0 0;
   line-height: 1.4;
@@ -991,7 +991,7 @@ body.menu-open {
 }
 
 .writer-name-text {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #333;
   display: block;
@@ -1149,7 +1149,7 @@ body.menu-open {
 }
 
 .tag-label {
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 700;
   color: #333;
 }
@@ -1160,7 +1160,7 @@ body.menu-open {
   background: #f0f0f0;
   border: 1px solid #ddd;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 14px;
   color: #444;
   transition: all 0.2s;
 }
@@ -1184,7 +1184,7 @@ body.menu-open {
 }
 
 .catSectionHeading h2 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #1e293b;
   margin: 0;
@@ -1255,7 +1255,7 @@ body.menu-open {
 
 /* Typography matching the image */
 .related-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
   color: #1e293b;
@@ -1268,7 +1268,7 @@ body.menu-open {
 }
 
 .related-time {
-  font-size: 12px;
+  font-size: 13px;
   color: #64748b;
   display: inline-flex;
   align-items: center;
@@ -1310,7 +1310,7 @@ body.menu-open {
 }
 
 .dlastHead h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: #1e293b;
   margin: 0;
@@ -1367,7 +1367,7 @@ body.menu-open {
 }
 
 .dLastNewsText h5 {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   color: #334155;
   line-height: 1.4;
