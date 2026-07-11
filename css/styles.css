@@ -1916,6 +1916,7 @@ Responsive
   background: #fff;
 }
 
+
 /* Kaler Kheya Section */
 .section-title.kaler {
   border-left-color: #1abc9c;
@@ -2208,154 +2209,177 @@ Responsive
   display: flex;
 }
 
-/* --- Footer General Styling --- */
-footer {
-  background-color: #d6d6d6;
-  color: #333333;
-  padding: 40px 0;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-footer a {
-  color: #333333;
-  text-decoration: none;
-  transition: opacity 0.2s ease-in-out;
-}
-
-footer a:hover {
-  color: #000000;
-  opacity: 0.8;
-}
-
-.footerTopSection {
-  border-bottom: 1px solid #b5b5b5;
+/* --- Footer Base Styling --- */
+.footer-section {
+  background: #d6d6d6;
+  padding-top: 35px;
   padding-bottom: 25px;
-  margin-bottom: 30px;
-}
-
-.footerTopSection ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px 20px;
-}
-
-.footerTopSection ul li {
-  position: relative;
+  font-family: Arial, sans-serif;
+  color: #000;
   font-size: 14px;
+  margin-top: 10px;
+  border-top: 6px solid #7e7e7e;
 }
 
-.footerTopSection ul li:not(:nth-child(5n))::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  top: 15%;
-  height: 70%;
-  border-right: 1px solid #b5b5b5;
+.footer-section a {
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.2s;
 }
 
-.footerMiddleSection .col-lg-4 {
-  text-align: center;
-  padding: 0 25px;
+.footer-section a:hover {
+  opacity: 0.7;
+}
+
+/* --- TOP SECTION --- */
+.footer-top-row {
+  /* This is the horizontal line */
+  border-bottom: 1px solid #999;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+/* Link Spacing */
+.top-link-col {
+  position: relative;
+  padding: 8px 0;
+  border-right: 1px solid #999;
+}
+.top-link-col:nth-child(5),
+.top-link-col:nth-child(10) {
+  border-right: none;
+}
+
+/* --- MIDDLE SECTION --- */
+.footer-middle-row {
+  padding-bottom: 10px;
+}
+
+.footer-col {
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-@media (min-width: 992px) {
-  .footerMiddleSection .col-lg-4:not(:last-child) {
-    border-right: 1px solid #b5b5b5;
-  }
+/* Middle Vertical Dividers (Cut off on top/bottom) */
+.footer-col.middle-border {
+  position: relative;
+}
+/* Add divider to LEFT and MIDDLE columns ONLY */
+.footer-col.middle-border::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15px; /* Spacing from top */
+  bottom: 15px; /* Spacing from bottom */
+  border-right: 1px solid #999;
 }
 
-.footerMiddleSection .col-lg-4:first-child p {
-  margin-bottom: 15px;
+/* --- LEFT COLUMN SPACING --- */
+.footer-links-stacked li {
+  padding: 16px 0;
+}
+.footer-links-stacked li:first-child {
+  padding-top: 0;
+}
+.footer-links-stacked li:last-child {
+  padding-bottom: 0;
+}
+
+/* --- MIDDLE COLUMN SPACING --- */
+.footer-info h6 {
   font-weight: bold;
-  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  font-size: 14px;
 }
-
-.footerMiddleSection h5 {
-  font-size: 15px;
-  font-weight: 700;
+.footer-info p,
+.footer-info address {
+  margin-bottom: 4px;
+  font-size: 13.5px;
+  color: #222;
+  line-height: 1.5;
+}
+.footer-info .email-links {
   margin-bottom: 8px;
 }
 
-.footerMiddleSection p {
-  margin-bottom: 4px;
-  font-size: 13px;
-}
-
-.footerMiddleSection address {
-  font-style: normal;
-  font-size: 13px;
-  margin-top: 5px;
-  line-height: 1.4;
-}
-
-.FSocialHeadLine {
+/* --- RIGHT COLUMN SPACING --- */
+.follow-text {
+  margin-bottom: 14px;
   font-size: 14px;
-  font-weight: normal;
-  margin-bottom: 15px;
 }
 
-.FSocialHeadLine span {
-  color: #ff5e00;
-  font-weight: bold;
-}
-
-.FSocialShare ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px 0;
-  display: flex;
-  gap: 10px;
-}
-
-.FSocialShare ul li a {
+/* Social Buttons (Cleaner CSS version of inline styles) */
+.social-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  color: #ffffff;
-  font-size: 14px;
+  color: #fff !important;
+  font-size: 16px;
+  transition: transform 0.2s;
 }
-
-.FSocialShare ul li:nth-child(1) a {
+.social-btn:hover {
+  transform: scale(1.05);
+  color: #fff !important;
+}
+.facebook {
   background-color: #3b5998;
 }
-.FSocialShare ul li:nth-child(2) a {
-  background-color: #00acee;
+.twitter {
+  background-color: #1da1f2;
 }
-.FSocialShare ul li:nth-child(3) a {
+.linkedin {
   background-color: #0077b5;
 }
-.FSocialShare ul li:nth-child(4) a {
+.youtube {
   background-color: #ff0000;
 }
-.FSocialShare ul li:nth-child(5) a {
+.instagram {
   background-color: #e1306c;
 }
 
-.FSocialShare ul li a:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
+.footer-logo {
+  max-width: 150px;
+  display: block;
 }
 
-.Flogo img {
-  max-width: 160px;
-  margin-bottom: 15px;
-}
-
-.FCopyRight {
+.footer-copyright {
   font-size: 12px;
-  color: #666666;
-  margin-top: 5px;
+  color: #444;
+}
+
+/* --- RESPONSIVE MOBILE/TABLET --- */
+@media (max-width: 991.98px) {
+  /* Remove Horizontal line on Mobile */
+  .footer-top-row {
+    border-bottom: none;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+  }
+
+  /* Remove Top Dividers on Mobile */
+  .top-link-col::after {
+    display: none !important;
+  }
+
+  /* Remove Middle Vertical Dividers on Mobile */
+  .footer-col.middle-border::after {
+    display: none !important;
+  }
+
+  /* Add small separator borders between stacked middle columns on mobile */
+  .footer-col {
+    padding: 25px 0;
+    border-bottom: 1px solid #bbb;
+  }
+  .footer-col:last-child {
+    border-bottom: none;
+  }
 }
 
 /* Google Translate cleanup */
