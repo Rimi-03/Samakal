@@ -325,7 +325,8 @@ img {
   position: absolute;
   top: 100%;
   right: 0;
-  left: 50% !important;
+  left: 0 !important;
+  transform: none !important;
   width: 85vw !important;
   max-width: 800px !important;
   background: #ffffff !important;

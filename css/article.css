@@ -331,7 +331,8 @@ img {
   position: absolute;
   top: 100%;
   right: 0;
-  left: 50% !important;
+  left: 0 !important;
+  transform: none !important;
   width: 85vw !important;
   max-width: 800px !important;
   background: #ffffff !important;
@@ -870,8 +871,12 @@ img {
   font-size: 16px;
 }
 
-.article-breadcrumb .breadcrumb-item a {
-  color: #b5121b;
+.article-breadcrumb .breadcrumb-item a:hover {
+  color: #6c757d;
+}
+
+.article-breadcrumb .breadcrumb-item a:hover {
+  color: #e67e22;
 }
 
 .article-breadcrumb .breadcrumb-item + .breadcrumb-item::before {

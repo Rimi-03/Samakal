@@ -302,15 +302,20 @@ img {
 }
 
 .nav-link:hover {
-  background: var(--primary-color);
-  color: #fff !important;
+  /* background: #e67e22; */
+  color: #f9c802 !important;
 }
 
 .dropdown-menu {
+  display: none;
   border: none;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   min-width: 180px;
+  margin-top: 0; /* Remove gaps so the mouse doesn't "lose" the hover */
+}
+.dropdown:hover > .dropdown-menu {
+  display: block;
 }
 
 .dropdown-item {
@@ -320,15 +325,16 @@ img {
 }
 
 .dropdown-item:hover {
-  background: var(--primary-color);
-  color: #fff;
+  /* background: var(--primary-color); */
+  color: #ff8c00;
 }
 
 .mega-menu-content {
   position: absolute;
   top: 100%;
   right: 0;
-  left: 50% !important;
+  left: 0 !important;
+  transform: none !important;
   width: 85vw !important;
   max-width: 800px !important;
   background: #ffffff !important;
@@ -436,9 +442,9 @@ img {
 .menu-button i {
   font-size: 28px;
 }
-.topbar-search i{
-font-size: 22px;
-color: #e67e22;
+.topbar-search i {
+  font-size: 22px;
+  color: #e67e22;
 }
 
 /* .menu-button:hover {
@@ -506,7 +512,7 @@ color: #e67e22;
   transition: background 0.2s;
 }
 .btn-search:hover {
-  background: #d35400;
+  background: #e67e22;
 }
 
 .close-search {
@@ -885,7 +891,7 @@ color: #e67e22;
   display: block;
 }
 .news-card-link:hover .news-title {
-  color: #d1121b !important;
+  color: var(--primary-color) !important;
   transition: color 0.2s ease;
 }
 .img-cover {
@@ -926,7 +932,7 @@ HOME LEAD SECTION
 }
 
 .home-lead-section a:hover {
-  color: #c40000;
+  color: #e67e22;
 }
 
 .home-lead-section img:hover {
@@ -2121,7 +2127,7 @@ Responsive
   right: 15px;
   width: 28px;
   height: 28px;
-  background: #212529;
+  background: #f32828;
   color: #ffffff;
   border: 2px solid #ffffff;
   border-radius: 50%;
@@ -2137,9 +2143,12 @@ Responsive
   padding: 0;
   line-height: 1;
 }
+#closeStickyAd {
+  font-size: 24px;
+}
 
 .close-sticky-ad:hover {
-  background: #dc3545;
+  background: #de0202;
   transform: scale(1.08);
 }
 
@@ -2151,9 +2160,9 @@ Responsive
   right: 20px;
   width: 45px;
   height: 45px;
-  background: var(--primary-color);
-  color: #fff;
-  border: none;
+  background: #f0f0f098;
+  color: #ffc107;
+  border: 2px solid #ffc107;
   border-radius: 50%;
   cursor: pointer;
   display: none;
@@ -2166,7 +2175,8 @@ Responsive
 }
 
 .back-to-top:hover {
-  background: #9a0f15;
+  background: #ffc107;
+  color: #ffffff;
   transform: translateY(-3px);
 }
 

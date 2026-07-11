@@ -472,6 +472,7 @@ if (typeof bootstrap !== "undefined") {
 // to desktop, or vice versa, never re-attached/removed the listeners).
 function initDropdownHover() {
   const dropdowns = document.querySelectorAll(".dropdown");
+  console.log("Found dropdowns:", dropdowns.length); // Does this print the correct number
 
   dropdowns.forEach(function (dropdown) {
     const dropdownMenu = dropdown.querySelector(".dropdown-menu");
@@ -493,8 +494,10 @@ function initDropdownHover() {
 
 // --- GOOGLE TRANSLATION ENGINE CONFIGURATION ---
 document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("lang-toggle-btn");
-  if (!btn) return;
+  const desktopBtn = document.getElementById("lang-toggle-btn");
+  const mobileBtn = document.getElementById("mobile-lang-btn");
+
+  if (!desktopBtn || !mobileBtn) return;
 
   function translate(lang) {
     const interval = setInterval(function () {
@@ -507,17 +510,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 300);
   }
 
-  btn.addEventListener("click", function (e) {
+  desktopBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
-    if (btn.dataset.lang === "en") {
+    if (desktopBtn.dataset.lang === "en") {
       translate("bn");
-      btn.dataset.lang = "bn";
+      desktopBtn.dataset.lang = "bn";
       btn.textContent = "English";
     } else {
       translate("en");
-      btn.dataset.lang = "en";
-      btn.textContent = "বাংলা";
+      desktopBtn.dataset.lang = "en";
+      desktopBtn.textContent = "বাংলা";
+    }
+  });
+
+  mobileBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    const currentLang = mobileBtn.dataset.lang || "bn";
+
+    if (currentLang === "bn") {
+      translate("en");
+      mobileBtn.dataset.lang = "en";
+      mobileBtn.textContent = "বাংলা";
+    } else {
+      translate("bn");
+      mobileBtn.dataset.lang = "bn";
+      mobileBtn.textContent = "English";
     }
   });
 });
