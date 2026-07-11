@@ -536,7 +536,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Keep the spinner visible to signal loading
   if (autoLoadSpinner) autoLoadSpinner.style.display = "block";
   if (loadMoreBtn) loadMoreBtn.style.display = "inline-flex";
-  
+  // Manual Load More button
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      loadMoreNews();
+    });
+  }
+
   // Reveal first 4 items after 1 second
   setTimeout(function () {
     let initialCount = 0;
