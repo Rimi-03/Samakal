@@ -1802,7 +1802,7 @@ Responsive
 
 .techlife-item-title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-dark);
   line-height: 1.4;
 }
@@ -2223,6 +2223,11 @@ Responsive
 .top-link-col:nth-child(5),
 .top-link-col:nth-child(10) {
   border-right: none;
+}
+/* Add a gap and a line on the LEFT side of every column EXCEPT the 1st and 6th */
+.top-link-col:not(:nth-child(1)):not(:nth-child(6)) {
+  border-left: 1px solid #999;
+  padding-left: 10px; /* This controls the GAP between the line and the text */
 }
 
 /* --- MIDDLE SECTION --- */
