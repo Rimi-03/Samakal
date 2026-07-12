@@ -1290,7 +1290,7 @@ color: #e67e22;
   right: 15px;
   width: 28px;
   height: 28px;
-  background: #212529;
+  background: #f32828;
   color: #ffffff;
   border: 2px solid #ffffff;
   border-radius: 50%;
@@ -1306,9 +1306,12 @@ color: #e67e22;
   padding: 0;
   line-height: 1;
 }
+#closeStickyAd {
+  font-size: 24px;
+}
 
 .close-sticky-ad:hover {
-  background: #dc3545;
+  background: #de0202;
   transform: scale(1.08);
 }
 
@@ -1320,9 +1323,9 @@ color: #e67e22;
   right: 20px;
   width: 45px;
   height: 45px;
-  background: var(--primary-color);
-  color: #fff;
-  border: none;
+  background: #f0f0f098;
+  color: #ffc107;
+  border: 2px solid #ffc107;
   border-radius: 50%;
   cursor: pointer;
   display: none;
@@ -1335,7 +1338,8 @@ color: #e67e22;
 }
 
 .back-to-top:hover {
-  background: #9a0f15;
+  background: #ffc107;
+  color: #ffffff;
   transform: translateY(-3px);
 }
 
