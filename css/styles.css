@@ -1776,6 +1776,12 @@ Responsive
   border-radius: 8px;
 }
 
+/* Wrapper for the whole section background */
+.tech-section-wrapper {
+  background-color: antiquewhite; /* Controls background for the whole block */
+  border-radius: 8px; /* Smooth rounded corners */
+}
+
 .techlife-title {
   font-size: 18px;
   font-weight: 700;
@@ -1790,14 +1796,20 @@ Responsive
   line-height: 1.5;
 }
 
+/* Inner items styling */
 .techlife-item {
   display: block;
-  padding: 8px 0;
-  border-bottom: 1px dashed var(--border-color);
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 12px;
+}
+.techlife-item .row {
+  align-items: center;
 }
 
 .techlife-item:last-child {
   border-bottom: none;
+  margin-bottom: 0;
 }
 
 .techlife-item-title {
@@ -1805,6 +1817,13 @@ Responsive
   font-weight: 400;
   color: var(--text-dark);
   line-height: 1.4;
+}
+.techlife-item .d-flex {
+  min-height: 90px; /* Set a uniform height for the grid items */
+}
+.techlife-item img {
+  height: 100%;
+  object-fit: cover; /* Forces the image to fill the container without distorting */
 }
 
 /* Lifestyle Section */
