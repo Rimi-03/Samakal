@@ -34,6 +34,16 @@
   --border-color: #ddd;
   --bg-light: #f5f5f5;
   --bg-dark: #1a1a2e;
+
+  --sm-text: #1a1a1a;
+  --sm-red: #c8102e;
+  --sm-summary: #5a5a5a;
+  --sm-divider: #e6e6e6;
+  --sm-bg: #ffffff;
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 32px;
 }
 
 *,
@@ -936,18 +946,6 @@ img {
 HOME LEAD SECTION
 =========================================*/
 
-:root {
-  --sm-text: #1a1a1a;
-  --sm-red: #c8102e;
-  --sm-summary: #5a5a5a;
-  --sm-divider: #e6e6e6;
-  --sm-bg: #ffffff;
-  --sp-1: 8px;
-  --sp-2: 16px;
-  --sp-3: 24px;
-  --sp-4: 32px;
-}
-
 .home-lead-section {
   background: var(--sm-bg);
   font-family: "Hind Siliguri", "Noto Sans Bengali", sans-serif;
@@ -1155,7 +1153,7 @@ HOME LEAD SECTION
 }
 
 .editorial-author {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--sm-summary) !important;
 }
 
@@ -1170,6 +1168,10 @@ HOME LEAD SECTION
 
 .fs-6 {
   font-size: 20px !important;
+}
+
+.news-border {
+  border-top-color: #ff0000 !important; /* Replace with your desired hex color */
 }
 
 /* =========================================================================

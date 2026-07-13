@@ -711,4 +711,14 @@ function toggleSub(icon) {
   }
 }
 
+document
+
+  .querySelector(".zoom-btn-print")
+
+  .addEventListener("click", function (e) {
+    e.preventDefault();
+
+    window.print();
+  });
+
 console.log("Samakal Clone - Responsive Bootstrap Design Loaded Successfully");
