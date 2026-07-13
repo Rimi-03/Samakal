@@ -380,6 +380,17 @@ img {
 @media (max-width: 991.98px) {
   .mobile-header {
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050;
+    background: #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  .mobile-topbar {
+    height: 60px;
+    padding: 0 15px;
   }
 
   .MobileMenu {
@@ -396,6 +407,10 @@ img {
   .MobileMenu.show {
     display: block;
   }
+  .logo-img {
+    max-width: 216px;
+    max-height: 34px;
+  }
 }
 /* ── Top Bar ── */
 .mobile-topbar {
@@ -403,9 +418,10 @@ img {
   height: 60px; /* Increased height slightly for better padding */
   border-bottom: 1px solid #e0e0e0;
   flex-shrink: 0;
-  background: #fff;
+  background: #eee;
   display: flex;
   align-items: center; /* Ensures content stays centered vertically */
+  padding: 15px 12px;
 }
 
 .topbar-close {
@@ -434,9 +450,9 @@ img {
 .menu-button i {
   font-size: 28px;
 }
-.topbar-search i{
-font-size: 22px;
-color: #e67e22;
+.topbar-search i {
+  font-size: 22px;
+  color: #e67e22;
 }
 
 /* .menu-button:hover {
@@ -669,12 +685,10 @@ color: #e67e22;
   color: #e67e22;
 }
 
-
 /* ============================================================
    ≤365px responsiveness (small phones / folded outer screens)
    ============================================================ */
 @media (max-width: 365px) {
-
   .ad-image {
     max-width: 100%;
     width: 100%;

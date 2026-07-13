@@ -388,6 +388,17 @@ img {
 @media (max-width: 991.98px) {
   .mobile-header {
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050;
+    background: #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  .mobile-topbar {
+    height: 60px;
+    padding: 0 15px;
   }
 
   .MobileMenu {
@@ -404,6 +415,10 @@ img {
   .MobileMenu.show {
     display: block;
   }
+  .logo-img {
+    max-width: 216px;
+    max-height: 34px;
+  }
 }
 /* ── Top Bar ── */
 .mobile-topbar {
@@ -411,9 +426,10 @@ img {
   height: 60px; /* Increased height slightly for better padding */
   border-bottom: 1px solid #e0e0e0;
   flex-shrink: 0;
-  background: #fff;
+  background: #eee;
   display: flex;
   align-items: center; /* Ensures content stays centered vertically */
+  padding: 15px 12px;
 }
 
 .topbar-close {
@@ -920,175 +936,261 @@ img {
 HOME LEAD SECTION
 =========================================*/
 
-.home-lead-section img {
-  width: 100%;
-  display: block;
-  transition: 0.35s ease;
+:root {
+  --sm-text: #1a1a1a;
+  --sm-red: #c8102e;
+  --sm-summary: #5a5a5a;
+  --sm-divider: #e6e6e6;
+  --sm-bg: #ffffff;
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 32px;
 }
 
-.home-lead-section a {
-  color: #222;
-  text-decoration: none;
+.home-lead-section {
+  background: var(--sm-bg);
+  font-family: "Hind Siliguri", "Noto Sans Bengali", sans-serif;
+  color: var(--sm-text);
 }
 
-.home-lead-section a:hover {
-  color: #e67e22;
+/* =========================================================================
+   SHARED HOVER BEHAVIOR
+   Every card in this section is a plain <a class="text-decoration-none
+   text-dark"> wrapping the whole block, so hover effects are scoped off
+   the anchor rather than a dedicated "__link" class.
+========================================================================= */
+.home-lead-section a:hover .lead-title,
+.home-lead-section a:hover h5,
+.home-lead-section a:hover h6,
+.home-lead-section a:hover .card-title {
+  color: var(--sm-red);
 }
 
-.home-lead-section img:hover {
+.home-lead-section a:hover .img-wrapper img {
   transform: scale(1.05);
 }
 
-.home-lead-section .img-wrapper {
+/* =========================================================================
+   IMG WRAPPER — used by lead, small-news, top-card(none), and Top-3 cards
+========================================================================= */
+.img-wrapper {
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 2px;
+  display: block;
+}
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
 }
 
-.home-lead-section .lead-title {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 15px;
+/* =========================================================================
+   LEAD NEWS
+========================================================================= */
+.lead-title {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.45;
+  margin: 0 0 10px;
+  color: var(--sm-text);
+  transition: color 0.2s ease;
 }
 
-.home-lead-section .lead-summary {
+.lead-summary {
   font-size: 16px;
-  line-height: 1.8;
-  color: #555;
+  line-height: 1.6;
+  color: var(--sm-summary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.home-lead-section .small-news {
-  padding: 14px 0;
-  border-bottom: 1px solid #ececec;
+.lead-title + .lead-summary,
+.lead-summary {
+  margin-top: 4px;
 }
 
-.home-lead-section .small-news:last-child {
-  border-bottom: 0;
+/* fixed ratio for the lead image */
+.col-lg-7.order-1.order-lg-2 .img-wrapper img,
+.col-lg-7 .img-wrapper img {
+  aspect-ratio: 16 / 10;
 }
 
-.home-lead-section .small-news h5 {
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.45;
-  margin-bottom: 0;
+/* =========================================================================
+   SMALL NEWS GRID  (2x2 grid under the lead)
+========================================================================= */
+.small-news-grid {
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--sm-divider);
 }
 
-.home-lead-section .top-card {
-  border: 0;
-  transition: 0.25s;
+.small-news {
+  padding-bottom: var(--sp-2);
 }
 
-.home-lead-section .top-card:hover {
-  transform: translateY(-3px);
+.small-news .img-wrapper img {
+  aspect-ratio: 4 / 3;
 }
 
-.home-lead-section .top-card img {
-  border-radius: 6px;
-}
-
-.home-lead-section .top-card h5 {
+.small-news h5 {
   font-size: 18px;
+  font-weight: 600;
   line-height: 1.45;
-  font-weight: 700;
+  margin: 0;
+  color: var(--sm-text);
+  transition: color 0.2s ease;
 }
 
-.home-lead-section .editorial-title {
-  font-size: 22px;
-  font-weight: 700;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #c40000;
-  margin-bottom: 20px;
+.small-news small.text-danger {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
 }
 
-.home-lead-section .editorial-item {
-  padding: 15px 0;
-  border-bottom: 1px solid #ececec;
+/* Vertical line: splits the 2x2 grid down the middle */
+@media (min-width: 768px) {
+  .border-right-divider-md {
+    border-right: 1px solid var(--sm-divider);
+    padding-right: 12px;
+  }
 }
 
-.home-lead-section .editorial-item:last-child {
+/* Horizontal line: separates row 1 (items 1-2) from row 2 (items 3-4) */
+.border-top-divider {
+  border-top: 1px solid var(--sm-divider);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+/* =========================================================================
+   MIDDLE COLUMN NEWS LIST (top-card articles, col-lg-4)
+========================================================================= */
+.top-card h5 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.45;
+  margin: 0;
+  color: var(--sm-text);
+  transition: color 0.2s ease;
+}
+
+.top-card small.text-danger {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.top-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.home-lead-section a:hover .top-card img {
+  transform: scale(1.06);
+}
+
+/* Vertical line: lead column vs middle news-list column */
+@media (min-width: 992px) {
+  .border-right-divider {
+    border-right: 1px solid var(--sm-divider);
+    padding-right: 20px;
+  }
+}
+
+/* Horizontal lines between each stacked item in the middle column */
+.divided-list .top-card {
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--sm-divider);
+}
+.divided-list .top-card:last-child {
+  padding-bottom: 0;
   border-bottom: 0;
 }
 
-.home-lead-section .editorial-author {
-  color: #c40000;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.home-lead-section .editorial-item h6 {
-  font-size: 17px;
-  line-height: 1.45;
-  font-weight: 700;
-  margin-top: 8px;
-}
-
-.home-lead-section .ad-box img {
-  border-radius: 6px;
-}
-
-.home-lead-section .card {
-  border: 0;
-  border-radius: 0;
-}
-
-.home-lead-section .card-body {
-  padding: 12px 0;
-}
-
+/* =========================================================================
+   TOP 3 NEWS CARDS  (bootstrap .card / .card-img-top / .card-title)
+========================================================================= */
 .home-lead-section .card-title {
   font-size: 18px;
   line-height: 1.45;
-  font-weight: 700;
+  color: var(--sm-text);
+  transition: color 0.2s ease;
 }
 
-.border-bottom {
-  border-bottom: 1px solid #ececec !important;
+.home-lead-section .card .img-wrapper img {
+  aspect-ratio: 16 / 10;
 }
 
-/*=========================================
-Responsive
-=========================================*/
+/* =========================================================================
+   RIGHT SIDEBAR — ads + editorial
+========================================================================= */
+.ad-box img {
+  max-width: 100%;
+  border-radius: 2px;
+}
 
-@media (max-width: 991.98px) {
-  .home-lead-section .lead-title {
-    font-size: 1.6rem;
-    margin-top: 20px;
+.editorial-title {
+  font-size: 18px;
+}
+.editorial-title .fa-circle-half-stroke {
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.editorial-item h6 {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--sm-text);
+  transition: color 0.2s ease;
+}
+
+.editorial-author {
+  font-size: 12px;
+  color: var(--sm-summary) !important;
+}
+
+.editorial-item .img-wrapper img {
+  aspect-ratio: 4 / 3;
+}
+
+/* custom bottom divider between editorial item 1 and item 2 */
+.border-b-custom {
+  border-bottom: 1px solid var(--sm-divider) !important;
+}
+
+.fs-6 {
+  font-size: 20px !important;
+}
+
+/* =========================================================================
+   RESPONSIVE
+========================================================================= */
+@media (max-width: 991px) {
+  .small-news-grid {
+    margin-top: var(--sp-3);
   }
-
-  .home-lead-section .lead-summary {
-    font-size: 15px;
-  }
-
-  .home-lead-section .small-news {
-    padding: 12px 0;
-  }
-
-  .home-lead-section .top-card {
-    margin-bottom: 20px;
-  }
-
-  .home-lead-section .editorial-title {
-    margin-top: 30px;
+  .col-lg-4.mt-4 {
+    margin-top: var(--sp-4) !important;
   }
 }
 
-@media (max-width: 767.98px) {
-  .home-lead-section .lead-title {
-    font-size: 1.4rem;
+@media (max-width: 575px) {
+  .lead-title {
+    font-size: 20px;
   }
-
-  .home-lead-section .small-news h5,
-  .home-lead-section .top-card h5,
-  .home-lead-section .editorial-item h6 {
-    font-size: 16px;
-  }
-
-  .home-lead-section .lead-summary {
-    display: none;
-  }
-
-  .home-lead-section .card-body {
-    padding-top: 10px;
+  .small-news .img-wrapper,
+  .top-card img {
+    aspect-ratio: 4 / 3;
   }
 }
 
@@ -1116,7 +1218,7 @@ Responsive
 
 .section-title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: bold;
   padding: 10px 15px;
   background: var(--bg-light);
   margin-bottom: 20px;
