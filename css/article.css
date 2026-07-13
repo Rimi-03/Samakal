@@ -417,7 +417,6 @@ img {
     max-width: 216px;
     max-height: 34px;
   }
-  
 }
 /* ── Top Bar ── */
 .mobile-topbar {
@@ -1789,4 +1788,49 @@ img[data-src] {
 
 img.loaded {
   opacity: 1;
+}
+
+@media print {
+  /* Hide major layout headers, sidebars, navbars, and footers completely */
+  header,
+  .ad-section,
+  .CatNewsListArea,
+  footer,
+  .sticky-footer-ad,
+  #stickyAd,
+  #backToTop,
+  .DlastNews,
+  .print-hide-ad,
+  nav,
+  aside,
+  .sidebar,
+  .navbar,
+  .col-md-3 {
+    display: none !important;
+  }
+
+  /* Force the news column to take up the full width */
+  .dNewsDesc,
+  .tagArea.mt-4 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+  }
+
+  /* Ensure the body container doesn't force extra heights */
+  body,
+  html,
+  .row,
+  .container {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  @page {
+    margin: 12mm;
+  }
 }
