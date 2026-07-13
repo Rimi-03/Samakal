@@ -629,7 +629,7 @@
               <a
                 href="#"
                 class="btn btn-link text-decoration-none text-danger fw-semibold p-0"
-                >আরও পড়ুন &gt;&gt;</a
+                >আরও পড়ুন &raquo;</a
               >
             </div>
           </div>
@@ -646,10 +646,9 @@
             <div class="col-lg-9">
               <div class="row g-3">
                 <!-- Lead News (Takes 8 cols) -->
-                <div class="col-lg-8">
+                <div class="col-lg-8 border-right-divider">
                   <article class="card border-0">
                     <a href="#" class="text-decoration-none text-dark">
-                      <!-- Modified: Text on left (col-lg-5), Image on right (col-lg-7) -->
                       <div class="row g-3">
                         <div class="col-lg-5 d-flex order-2 order-lg-1">
                           <div class="my-auto">
@@ -678,9 +677,9 @@
                   </article>
 
                   <!-- Small News Items Grid -->
-                  <div class="row g-3 mt-3">
+                  <div class="row g-3 mt-3 small-news-grid">
                     <!-- Item 1 -->
-                    <div class="col-md-6 small-news">
+                    <div class="col-md-6 small-news border-right-divider-md">
                       <a href="#" class="text-decoration-none text-dark">
                         <div class="row g-2">
                           <div class="col-5">
@@ -731,7 +730,9 @@
                     </div>
 
                     <!-- Item 3 -->
-                    <div class="col-md-6 small-news">
+                    <div
+                      class="col-md-6 small-news border-right-divider-md border-top-divider"
+                    >
                       <a href="#" class="text-decoration-none text-dark">
                         <div class="row g-2">
                           <div class="col-5">
@@ -754,7 +755,7 @@
                     </div>
 
                     <!-- Item 4 -->
-                    <div class="col-md-6 small-news">
+                    <div class="col-md-6 small-news border-top-divider">
                       <a href="#" class="text-decoration-none text-dark">
                         <div class="row g-2">
                           <div class="col-5">
@@ -780,7 +781,7 @@
                 <!-- Middle Column News List (Takes 4 cols inside col-lg-9) -->
                 <div class="col-lg-4 mt-4 mt-lg-0">
                   <div
-                    class="d-flex flex-column justify-content-around gap-4 h-100"
+                    class="d-flex flex-column justify-content-around gap-4 h-100 divided-list"
                   >
                     <article class="top-card">
                       <a href="#" class="text-decoration-none text-dark">
@@ -866,8 +867,8 @@
               <!-- End Inner Row inside Left Content -->
 
               <!--====================================================
-          TOP 3 NEWS (Placed inside col-lg-9 so it aligns left)
-        =====================================================-->
+      TOP 3 NEWS (Placed inside col-lg-9 so it aligns left)
+  =====================================================-->
               <div class="row mt-4 g-3 border-top pt-4">
                 <!-- Card 1 -->
                 <div class="col-md-4">
@@ -881,7 +882,7 @@
                         />
                       </div>
                       <div class="card-body px-0 pt-2">
-                        <h5 class="card-title fs-6 fw-bold">
+                        <h5 class="card-title fs-6">
                           মন্ত্রী বললেন মালয়েশিয়ার শ্রমবাজার খুলেছে,
                           মন্ত্রণালয় করল সতর্ক
                         </h5>
@@ -902,7 +903,7 @@
                         />
                       </div>
                       <div class="card-body px-0 pt-2">
-                        <h5 class="card-title fs-6 fw-bold">
+                        <h5 class="card-title fs-6">
                           ১৯৭৪ সালের প্রেস কাউন্সিল আইন যুগোপযোগী করা হবে:
                           তথ্যমন্ত্রী
                         </h5>
@@ -923,7 +924,7 @@
                         />
                       </div>
                       <div class="card-body px-0 pt-2">
-                        <h5 class="card-title fs-6 fw-bold">
+                        <h5 class="card-title fs-6">
                           জালিয়াতির মাধ্যমে মুক্তিযোদ্ধা কোটার সুবিধাভোগীদের
                           বিরুদ্ধে ব্যবস্থা শুরু
                         </h5>
@@ -957,8 +958,13 @@
 
               <!-- Editorial Section (Now naturally matching the image layout placement) -->
               <div class="mb-3 pt-3 border-top">
-                <h4 class="editorial-title fs-5 fw-bold text-dark pb-2 mb-3">
-                  <span class="text-warning">●</span> সম্পাদকীয় ও মতামত
+                <h4
+                  class="editorial-title fs-5 fw-bold text-dark pb-2 mb-3 border-bottom"
+                >
+                  <span class="text-warning"
+                    ><i class="fa-solid fa-circle-half-stroke"></i
+                  ></span>
+                  সম্পাদকীয় ও মতামত
                 </h4>
 
                 <!-- Item 1 -->
@@ -2512,122 +2518,163 @@
             </div>
           </div>
           <div class="col-lg-6">
-  <a href="#">
-    <h2 class="section-title techlife-title" style="font-size: 22px">
-      টেকলাইফ
-    </h2>
-  </a>
+            <a href="#">
+              <h2 class="section-title techlife-title" style="font-size: 22px">
+                টেকলাইফ
+              </h2>
+            </a>
 
-  <div class="techlife-top mb-4">
-    <a href="#" class="text-decoration-none">
-      <div class="row g-3">
-        <div class="col-lg-6">
-          <img
-            src="https://samakal.com/media/imgAll/2026July/zoom-alter-2-1783315411.jpg"
-            alt=""
-            class="img-fluid w-100 rounded"
-          />
-        </div>
-        <div class="col-lg-6">
-          <h3 class="techlife-title">জুমের বিকল্প হবে মেটা</h3>
-          <p class="techlife-brief">
-            ল্যাপটপ বা কম্পিউটারে অনেকে হোয়াটসঅ্যাপ ওয়েব সংস্করণ
-            ব্যবহার করেন। অনেকে এতে ভিডিও কল বা ভয়েস কল করতে পারেন
-            না। কারণ, ল্যাপটপে এই অ্যাপ অ্যাপ্লিকেশন না থাকলে শুধু
-            ওয়েব সংস্করণ ব্যবহার করে কল করার সুবিধা পাওয়া যায় না।
-          </p>
-        </div>
-      </div>
-    </a>
-  </div>
+            <div class="techlife-top mb-4">
+              <a href="#" class="text-decoration-none">
+                <div class="row g-3">
+                  <div class="col-lg-6">
+                    <img
+                      src="https://samakal.com/media/imgAll/2026July/zoom-alter-2-1783315411.jpg"
+                      alt=""
+                      class="img-fluid w-100 rounded"
+                    />
+                  </div>
+                  <div class="col-lg-6">
+                    <h3 class="techlife-title">জুমের বিকল্প হবে মেটা</h3>
+                    <p class="techlife-brief">
+                      ল্যাপটপ বা কম্পিউটারে অনেকে হোয়াটসঅ্যাপ ওয়েব সংস্করণ
+                      ব্যবহার করেন। অনেকে এতে ভিডিও কল বা ভয়েস কল করতে পারেন
+                      না। কারণ, ল্যাপটপে এই অ্যাপ অ্যাপ্লিকেশন না থাকলে শুধু
+                      ওয়েব সংস্করণ ব্যবহার করে কল করার সুবিধা পাওয়া যায় না।
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
 
-  <div class="row g-3">
-    <!-- Item 1 -->
-    <div class="col-md-6">
-      <a href="#" class="techlife-item d-block rounded overflow-hidden" style="background-color: antiquewhite;">
-        <div class="d-flex align-items-stretch flex-nowrap" style="min-height: 95px;">
-          <div class="flex-shrink-0" style="width: 40%;">
-            <img
-              src="https://samakal.com/media/imgAll/2026July/SM/apple-glass-3-1783315313.jpg"
-              alt=""
-              class="w-100 h-100"
-              style="object-fit: cover;"
-            />
-          </div>
-          <div class="flex-grow-1 p-2 d-flex align-items-center">
-            <h4 class="techlife-item-title m-0" style="font-size: 16px; font-weight: 600;">
-              দৃশ্যকে বদলে দেবে আগামীর স্মার্ট চশমা
-            </h4>
-          </div>
-        </div>
-      </a>
-    </div>
+            <div class="row g-3">
+              <!-- Item 1 -->
+              <div class="col-md-6">
+                <a
+                  href="#"
+                  class="techlife-item d-block rounded overflow-hidden"
+                  style="background-color: antiquewhite"
+                >
+                  <div
+                    class="d-flex align-items-stretch flex-nowrap"
+                    style="min-height: 95px"
+                  >
+                    <div class="flex-shrink-0" style="width: 40%">
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/apple-glass-3-1783315313.jpg"
+                        alt=""
+                        class="w-100 h-100"
+                        style="object-fit: cover"
+                      />
+                    </div>
+                    <div class="flex-grow-1 p-2 d-flex align-items-center">
+                      <h4
+                        class="techlife-item-title m-0"
+                        style="font-size: 16px; font-weight: 600"
+                      >
+                        দৃশ্যকে বদলে দেবে আগামীর স্মার্ট চশমা
+                      </h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
 
-    <!-- Item 2 -->
-    <div class="col-md-6">
-      <a href="#" class="techlife-item d-block rounded overflow-hidden" style="background-color: antiquewhite;">
-        <div class="d-flex align-items-stretch flex-nowrap" style="min-height: 95px;">
-          <div class="flex-shrink-0" style="width: 40%;">
-            <img
-              src="https://samakal.com/media/imgAll/2026July/SM/iph-18-pro-1783315201.jpg"
-              alt=""
-              class="w-100 h-100"
-              style="object-fit: cover;"
-            />
-          </div>
-          <div class="flex-grow-1 p-2 d-flex align-items-center">
-            <h4 class="techlife-item-title m-0" style="font-size: 16px; font-weight: 600;">
-              <span class="subheading text-danger fw-bold">গ্যাজেট ফিউশন / </span>আইফোন ১৮
-              প্রো মডেলে অনিশ্চয়তা
-            </h4>
-          </div>
-        </div>
-      </a>
-    </div>
+              <!-- Item 2 -->
+              <div class="col-md-6">
+                <a
+                  href="#"
+                  class="techlife-item d-block rounded overflow-hidden"
+                  style="background-color: antiquewhite"
+                >
+                  <div
+                    class="d-flex align-items-stretch flex-nowrap"
+                    style="min-height: 95px"
+                  >
+                    <div class="flex-shrink-0" style="width: 40%">
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/iph-18-pro-1783315201.jpg"
+                        alt=""
+                        class="w-100 h-100"
+                        style="object-fit: cover"
+                      />
+                    </div>
+                    <div class="flex-grow-1 p-2 d-flex align-items-center">
+                      <h4
+                        class="techlife-item-title m-0"
+                        style="font-size: 16px; font-weight: 600"
+                      >
+                        <span class="subheading text-danger fw-bold"
+                          >গ্যাজেট ফিউশন / </span
+                        >আইফোন ১৮ প্রো মডেলে অনিশ্চয়তা
+                      </h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
 
-    <!-- Item 3 -->
-    <div class="col-md-6">
-      <a href="#" class="techlife-item d-block rounded overflow-hidden" style="background-color: antiquewhite;">
-        <div class="d-flex align-items-stretch flex-nowrap" style="min-height: 95px;">
-          <div class="flex-shrink-0" style="width: 40%;">
-            <img
-              src="https://samakal.com/media/imgAll/2026July/SM/google-storage-1783315074.jpg"
-              alt=""
-              class="w-100 h-100"
-              style="object-fit: cover;"
-            />
-          </div>
-          <div class="flex-grow-1 p-2 d-flex align-items-center">
-            <h4 class="techlife-item-title m-0" style="font-size: 16px; font-weight: 600;">
-              সহজে ফুরাবে না স্টোরেজ ব্যাকআপে নতুন পরিষেবা
-            </h4>
-          </div>
-        </div>
-      </a>
-    </div>
+              <!-- Item 3 -->
+              <div class="col-md-6">
+                <a
+                  href="#"
+                  class="techlife-item d-block rounded overflow-hidden"
+                  style="background-color: antiquewhite"
+                >
+                  <div
+                    class="d-flex align-items-stretch flex-nowrap"
+                    style="min-height: 95px"
+                  >
+                    <div class="flex-shrink-0" style="width: 40%">
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/google-storage-1783315074.jpg"
+                        alt=""
+                        class="w-100 h-100"
+                        style="object-fit: cover"
+                      />
+                    </div>
+                    <div class="flex-grow-1 p-2 d-flex align-items-center">
+                      <h4
+                        class="techlife-item-title m-0"
+                        style="font-size: 16px; font-weight: 600"
+                      >
+                        সহজে ফুরাবে না স্টোরেজ ব্যাকআপে নতুন পরিষেবা
+                      </h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
 
-    <!-- Item 4 -->
-    <div class="col-md-6">
-      <a href="#" class="techlife-item d-block rounded overflow-hidden" style="background-color: antiquewhite;">
-        <div class="d-flex align-items-stretch flex-nowrap" style="min-height: 95px;">
-          <div class="flex-shrink-0" style="width: 40%;">
-            <img
-              src="https://samakal.com/media/imgAll/2026July/SM/untitled-44-1783314950.jpg"
-              alt=""
-              class="w-100 h-100"
-              style="object-fit: cover;"
-            />
+              <!-- Item 4 -->
+              <div class="col-md-6">
+                <a
+                  href="#"
+                  class="techlife-item d-block rounded overflow-hidden"
+                  style="background-color: antiquewhite"
+                >
+                  <div
+                    class="d-flex align-items-stretch flex-nowrap"
+                    style="min-height: 95px"
+                  >
+                    <div class="flex-shrink-0" style="width: 40%">
+                      <img
+                        src="https://samakal.com/media/imgAll/2026July/SM/untitled-44-1783314950.jpg"
+                        alt=""
+                        class="w-100 h-100"
+                        style="object-fit: cover"
+                      />
+                    </div>
+                    <div class="flex-grow-1 p-2 d-flex align-items-center">
+                      <h4
+                        class="techlife-item-title m-0"
+                        style="font-size: 16px; font-weight: 600"
+                      >
+                        টিউশন ইকোসিস্টেম তৈরিতে উদ্যোগ
+                      </h4>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="flex-grow-1 p-2 d-flex align-items-center">
-            <h4 class="techlife-item-title m-0" style="font-size: 16px; font-weight: 600;">
-              টিউশন ইকোসিস্টেম তৈরিতে উদ্যোগ
-            </h4>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
         </div>
       </section>
 
